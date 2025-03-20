@@ -7,7 +7,7 @@ PuzzleBoard::PuzzleBoard(int size) {
 	for (int i = 0; i < size; i++)
 		for (int j = 0; j < size; j++)
 			board[i][j] = v++;
-	//board[size - 1][size - 1] = 0; //moze zmienic zeby sprawdzac wartosc maksymalna wtedy przy rozwiazaniu nie trzeba by sprawdzac ostatniego pola
+	board[size - 1][size - 1] = 0; //moze zmienic zeby sprawdzac wartosc maksymalna wtedy przy rozwiazaniu nie trzeba by sprawdzac ostatniego pola
 	mx = size - 1;
 	my = size - 1;
 }
