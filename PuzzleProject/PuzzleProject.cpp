@@ -14,7 +14,12 @@ PuzzleProject::PuzzleProject(QWidget* parent)
     gridLayout = new QGridLayout();
     mainLayout->addLayout(gridLayout);
 
+    timeLabel = new QLabel("Czas: 0.0s", this);
+    mainLayout->addWidget(timeLabel);
 
+    time = new QTimer(this);
+    connect(time, &QTimer::timeout, this, &PuzzleProject::updateTime);
+    time->start(100);
 
 
     for (int i = 0; i < boardSize; i++) {
@@ -37,7 +42,7 @@ PuzzleProject::~PuzzleProject()
 void PuzzleProject::updateBoard() {
     for (int i = 0; i < boardSize; i++)
         for (int j = 0; j < boardSize; j++)
-            buttons[i * boardSize + j]->setText(board->getBoard()[i][j] == 0 ? "" : QString::number(board->getBoard()[i][j]));
+            buttons[i * boardSize + j]->setText(board->getBoard()[i][j] == boardSize*boardSize ? "" : QString::number(board->getBoard()[i][j]));
 }
 
 void PuzzleProject::onTileClicked() {
@@ -49,3 +54,6 @@ void PuzzleProject::onTileClicked() {
     updateBoard();
 }
 
+void PuzzleProject::updateTime() {
+    timeLabel->setText("Czas:" + QString::number(board->getTime()));
+}

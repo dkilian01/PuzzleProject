@@ -23,11 +23,15 @@ private:
     PuzzleBoard* board;
     QGridLayout* gridLayout;
     QVector<QPushButton*> buttons;
+
+    QLabel* timeLabel;
+    QTimer* time;
+
     int boardSize;
 
     void updateBoard();
 
 private slots:
     void onTileClicked();
-
+    void updateTime();
 };
