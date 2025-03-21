@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="StartDialog.cpp" />
     <QtRcc Include="PuzzleProject.qrc" />
     <QtUic Include="PuzzleProject.ui" />
     <QtMoc Include="PuzzleProject.h" />
@@ -102,6 +103,7 @@
   <ItemGroup>
     <ClInclude Include="PuzzleBase.h" />
     <ClInclude Include="PuzzleBoard.h" />
+    <QtMoc Include="StartDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

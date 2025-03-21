@@ -1,10 +1,10 @@
 #include "PuzzleProject.h"
 #include <QVBoxLayout>
 
-PuzzleProject::PuzzleProject(QWidget* parent)
-    : QMainWindow(parent) 
+PuzzleProject::PuzzleProject(int boardSize,QWidget* parent)
+    : QMainWindow(parent),boardSize(boardSize)
 {
-    boardSize = 3;
+  
     board = new PuzzleBoard(boardSize);
     board->changeBoard();
     ui.setupUi(this);
@@ -53,6 +53,12 @@ void PuzzleProject::onTileClicked() {
     int index = buttons.indexOf(clickedButton);
     board->move(index / boardSize, index % boardSize);
     updateBoard();
+
+    if (board->isSolved())
+    {
+        time->stop();
+        timeLabel->setText("Gratulacje! Czas:" + QString::number(board->getTime()));
+    }
 }
 
 void PuzzleProject::updateTime() {

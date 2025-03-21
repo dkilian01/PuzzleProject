@@ -15,7 +15,7 @@ class PuzzleProject : public QMainWindow
     Q_OBJECT
 
 public:
-    PuzzleProject(QWidget* parent = nullptr);
+    PuzzleProject(int boardSize,QWidget* parent = nullptr);
     ~PuzzleProject();
 
 private:
