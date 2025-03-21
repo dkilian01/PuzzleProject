@@ -12,6 +12,33 @@ PuzzleBoard::PuzzleBoard(int size) {
 	my = size - 1;
 	
 
+	
+}
+void PuzzleBoard::changeBoard()
+{
+	vector<int> tiles;
+
+	for (auto r : board)
+		for (int v : r)
+			tiles.push_back(v);
+
+	random_device rd;
+	mt19937 g(rd());
+	shuffle(tiles.begin(), tiles.end(), g);
+	int index = 0;
+	for (int i = 0; i < board.size();i++) {
+		for (int j = 0; j < board.size();j++) {
+			board[i][j] = tiles[index];
+			if (tiles[index] == board.size() * board.size())
+			{
+				mx = i;
+				my = j;
+			}
+			index++;
+		}
+	}
+
+
 	startTimer();
 }
 void PuzzleBoard::move(int x, int y) {

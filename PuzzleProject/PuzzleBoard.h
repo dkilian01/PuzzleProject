@@ -2,6 +2,7 @@
 #include "PuzzleBase.h"
 #include <vector>
 #include <chrono>
+#include<random>
 using namespace std;
 class PuzzleBoard :
     public PuzzleBase
@@ -16,6 +17,7 @@ public:
     bool isSolved() const override;
     int getSize() { return board.size(); }
     vector<vector<int>> getBoard() { return board; }
+    void changeBoard();
 
     void startTimer();
     double getTime();

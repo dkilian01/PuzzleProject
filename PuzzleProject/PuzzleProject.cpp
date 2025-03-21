@@ -4,8 +4,9 @@
 PuzzleProject::PuzzleProject(QWidget* parent)
     : QMainWindow(parent) 
 {
-    boardSize = 6;
+    boardSize = 3;
     board = new PuzzleBoard(boardSize);
+    board->changeBoard();
     ui.setupUi(this);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
