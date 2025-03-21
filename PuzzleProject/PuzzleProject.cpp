@@ -1,6 +1,6 @@
 #include "PuzzleProject.h"
 #include <QVBoxLayout>
-
+#include<QMessageBox>
 PuzzleProject::PuzzleProject(int boardSize,QWidget* parent)
     : QMainWindow(parent),boardSize(boardSize)
 {
@@ -58,6 +58,7 @@ void PuzzleProject::onTileClicked() {
     {
         time->stop();
         timeLabel->setText("Gratulacje! Czas:" + QString::number(board->getTime()));
+        QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(board->getTime()));
     }
 }
 
