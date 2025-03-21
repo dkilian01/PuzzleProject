@@ -10,7 +10,6 @@ private:
 	string name;
 public:
 	Player(string name);
-	Player();
 	~Player();
 	void setScore(double time, int size);
 	vector<pair<double, int>> getScores();

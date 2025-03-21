@@ -1,8 +1,10 @@
 #include "PuzzleProject.h"
+#include "Player.h"
 #include <QVBoxLayout>
-#include<QMessageBox>
-PuzzleProject::PuzzleProject(int boardSize,QWidget* parent)
-    : QMainWindow(parent),boardSize(boardSize)
+#include <QMessageBox>
+
+PuzzleProject::PuzzleProject(int boardSize,Player player,QWidget* parent)
+    : QMainWindow(parent),boardSize(boardSize),player(player)
 {
   
     board = new PuzzleBoard(boardSize);
@@ -22,6 +24,9 @@ PuzzleProject::PuzzleProject(int boardSize,QWidget* parent)
     connect(time, &QTimer::timeout, this, &PuzzleProject::updateTime);
     time->start(100);
 
+    testLabel = new QLabel("Czas: 0.0s", this);
+    mainLayout->addWidget(testLabel);
+    testLabel->setText(QString::fromStdString(player.getPlayerName()));
 
     for (int i = 0; i < boardSize; i++) {
         for (int j = 0; j < boardSize; j++) {
@@ -57,11 +62,21 @@ void PuzzleProject::onTileClicked() {
     if (board->isSolved())
     {
         time->stop();
-        timeLabel->setText("Gratulacje! Czas:" + QString::number(board->getTime()));
-        QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(board->getTime()));
+        double t = board->getTime();
+        timeLabel->setText("Gratulacje! Czas:" + QString::number(t));
+        QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(t));
+        player.setScore(t, boardSize);
+
     }
 }
 
 void PuzzleProject::updateTime() {
     timeLabel->setText("Czas:" + QString::number(board->getTime()));
+}
+
+void PuzzleProject::closeEvent(QCloseEvent* event)
+{
+    player.saveToFile();
+
+    event->accept();
 }
