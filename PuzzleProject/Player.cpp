@@ -1,5 +1,8 @@
 #include "Player.h"
-
+Player::Player(string name)
+{
+	this->name = name;
+}
 void Player::setScore(double time, int size)
 {
 	scores.push_back(pair(time,size));
@@ -9,9 +12,17 @@ vector<pair<double, int>> Player::getScores() {
 }
 void Player::setPlayerName(string name)
 {
-	playerName = name;
+	this->name = name;
 }
 string Player::getPlayerName()
 {
-	return playerName;
+	return name;
+}
+void Player::saveToFile()
+{
+
+}
+void Player::loadFromFile()
+{
+
 }
