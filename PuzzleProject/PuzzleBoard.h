@@ -2,13 +2,16 @@
 #include "PuzzleBase.h"
 #include <vector>
 #include <chrono>
-#include<random>
+#include <random>
+#include <fstream> 
 using namespace std;
 class PuzzleBoard :
     public PuzzleBase
 {
 private:
     vector<vector<int>> board;
+    vector<vector<vector<int>>> history;
+    int currentStep = -1;
     int mx, my;
     chrono::time_point<chrono::steady_clock> startTime;
 public:
@@ -21,5 +24,14 @@ public:
 
     void startTimer();
     double getTime();
+
+    bool canUndo() const;
+    bool canRedo() const;
+    void undoMove();
+    void redoMove();
+    int getStep();
+
+    void saveState(const string& filename);
+    bool loadState(const string& filename);
 };
 

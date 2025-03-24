@@ -37,7 +37,24 @@ private:
 
     void updateBoard();
 
+    QPushButton* undoButton;
+    QPushButton* redoButton;
+    QPushButton* saveButton;
+    QPushButton* loadButton;
+    QPushButton* themeButton;
+    QPushButton* statsButton;
+    QPushButton* rankingButton;
+    bool darkMode = false;
+
+    void createControlButtons(QVBoxLayout* layout);
+
 private slots:
     void onTileClicked();
     void updateTime();
+
+    void handleUndo();
+    void handleRedo();
+    void handleSave();
+    void handleLoad();
+    void handleThemeToggle();
 };

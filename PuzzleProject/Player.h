@@ -1,7 +1,8 @@
 #pragma once
-#include<vector>
-#include<string>
+#include <vector>
+#include <string>
 #include <fstream> 
+#include <QDir>
 using namespace std;
 class Player
 {
@@ -13,10 +14,15 @@ public:
 	~Player();
 	void setScore(double time, int size);
 	vector<pair<double, int>> getScores();
-	string getPlayerName();
+	string getPlayerName() const;
 	void setPlayerName(string name);
 	void saveToFile();
 	void loadFromFile();
 
+	double getAverageTime() const;
+	int getGamesPlayed() const;
+	double getBestTime() const;
+
+	static vector<Player> loadAllPlayers();
 };
 

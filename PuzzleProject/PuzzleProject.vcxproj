@@ -93,7 +93,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RankDialog.cpp" />
     <ClCompile Include="StartDialog.cpp" />
+    <ClCompile Include="StatisticsDialog.cpp" />
     <QtRcc Include="PuzzleProject.qrc" />
     <QtUic Include="PuzzleProject.ui" />
     <QtMoc Include="PuzzleProject.h" />
@@ -105,6 +107,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PuzzleBase.h" />
     <ClInclude Include="PuzzleBoard.h" />
+    <QtMoc Include="RankDialog.h" />
+    <QtMoc Include="StatisticsDialog.h" />
     <QtMoc Include="StartDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
