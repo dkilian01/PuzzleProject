@@ -69,7 +69,7 @@ void PuzzleProject::onTileClicked() {
 
 
     const auto& grid = board->getBoard();
-    board->move(index / grid.size(), index % grid.size());
+    board->move(index);
     testLabel->setText("X:" + QString::number(board->getX()) + " Y:" + QString::number(board->getY()) + " button" + QString::number(index));
     
    

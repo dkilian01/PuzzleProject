@@ -6,7 +6,7 @@
  */
 class PuzzleBase {
 public:
-    virtual void move(int x, int y) = 0;
+    virtual void move(int index) = 0;
     virtual bool isSolved() const = 0;
     virtual std::vector<std::vector<int>> getBoard() const = 0;
 
