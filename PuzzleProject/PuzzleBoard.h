@@ -1,5 +1,6 @@
 #pragma once
 #include "PuzzleBase.h"
+#include "GameStateManager.h"
 #include <vector>
 #include <chrono>
 #include <random>
@@ -10,8 +11,9 @@ class PuzzleBoard :
 {
 private:
     vector<vector<int>> board;
-    vector<vector<vector<int>>> history;
-    int currentStep = -1;
+    //vector<vector<vector<int>>> history;
+    //int currentStep = -1;
+    GameStateManager<vector<vector<int>>> stateManager;
     int mx, my;
     chrono::time_point<chrono::steady_clock> startTime;
 public:
@@ -19,19 +21,21 @@ public:
     void move(int x, int y) override;
     bool isSolved() const override;
     int getSize() { return board.size(); }
-    vector<vector<int>> getBoard() { return board; }
+    vector<vector<int>> getBoard() const override { return board; }
     void changeBoard();
 
-    void startTimer();
-    double getTime();
+    void startTimer() override;
+    double getTime()  override;
 
-    bool canUndo() const;
-    bool canRedo() const;
-    void undoMove();
-    void redoMove();
-    int getStep();
+    bool canUndo() const override;
+    bool canRedo() const override;
+    void undoMove() override;
+    void redoMove() override;
+    //int getStep();
 
-    void saveState(const string& filename);
-    bool loadState(const string& filename);
+    void saveState(const string& filename) override;
+    bool loadState(const string& filename) override;
+    int getX()override;
+    int getY()override;
 };
 

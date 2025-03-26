@@ -34,26 +34,17 @@ void PuzzleBoard::changeBoard()
 			index++;
 		}
 	}
-	history.clear();
-	currentStep = -1;
-	history.push_back(board);
-	currentStep = 0;
 	startTimer();
 }
 void PuzzleBoard::move(int x, int y) {
 	if ((abs(mx - x) + abs(my - y)) == 1) {
-		if (currentStep < (int)history.size() - 1) {
-			history.erase(history.begin() + currentStep + 1, history.end());
-		}
-
-		history.push_back(board);
-		currentStep++;
-
+		stateManager.saveState(board);
 		swap(board[mx][my], board[x][y]);
 		mx = x;
 		my = y;
 
 	}
+	
 }
 bool PuzzleBoard::isSolved()const {
 	int v=1;
@@ -75,67 +66,37 @@ double PuzzleBoard::getTime() {
 }
 
 bool PuzzleBoard::canUndo() const {
-	return currentStep >= 0;
+	return stateManager.canUndo();
 }
 
 bool PuzzleBoard::canRedo() const {
-	return currentStep < (int)history.size() - 1;
+	return stateManager.canRedo();
 }
 
 void PuzzleBoard::undoMove() {
-	if (canUndo()) {
-		board = history[currentStep];
-		currentStep--;
-
-		for (int i = 0; i < board.size(); ++i)
-			for (int j = 0; j < board.size(); ++j)
-				if (board[i][j] == board.size() * board.size()) {
-					mx = i; my = j;
-				}
+	if (stateManager.canUndo()) {
+		board = stateManager.undo(board);
 	}
 }
 
 void PuzzleBoard::redoMove() {
-	if (canRedo()) {
-		currentStep++;
-		board = history[currentStep];
-
-		for (int i = 0; i < board.size(); ++i)
-			for (int j = 0; j < board.size(); ++j)
-				if (board[i][j] == board.size() * board.size()) {
-					mx = i; my = j;
-				}
+	if (stateManager.canRedo()) {
+		board = stateManager.redo(board);
 	}
 }
 
 void PuzzleBoard::saveState(const string& filename) {
-	ofstream out(filename);
-	out << board.size() << "\n";
-	for (auto& row : board)
-		for (int v : row)
-			out << v << " ";
-	out.close();
+	stateManager.saveToFile(filename, board);
 }
 
 bool PuzzleBoard::loadState(const string& filename) {
-	ifstream in(filename);
-	if (!in) return false;
-	int size;
-	in >> size;
-	board.resize(size, vector<int>(size));
-	for (int i = 0; i < size; ++i)
-		for (int j = 0; j < size; ++j) {
-			in >> board[i][j];
-			if (board[i][j] == size * size) {
-				mx = i; my = j;
-			}
-		}
-	in.close();
-	history.clear();
-	currentStep = -1;
-	startTimer();
-	return true;
+	return stateManager.loadFromFile(filename, board);
 }
-int PuzzleBoard::getStep() {
-	return currentStep;
+int PuzzleBoard::getX()
+{
+	return mx;
+}
+int PuzzleBoard::getY()
+{
+	return my;
 }

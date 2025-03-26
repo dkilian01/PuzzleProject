@@ -5,12 +5,10 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 
-PuzzleProject::PuzzleProject(int boardSize,Player player,QWidget* parent)
-    : QMainWindow(parent),boardSize(boardSize),player(player)
+PuzzleProject::PuzzleProject(PuzzleBase* board,Player player,QWidget* parent)
+    : QMainWindow(parent),board(board),player(player)
 {
-  
-    board = new PuzzleBoard(boardSize);
-    board->changeBoard();
+    board->startTimer();
     ui.setupUi(this);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
@@ -32,7 +30,7 @@ PuzzleProject::PuzzleProject(int boardSize,Player player,QWidget* parent)
     time->start(100);
     
 
-    for (int i = 0; i < boardSize; i++) {
+    /*for (int i = 0; i < boardSize; i++) {
         for (int j = 0; j < boardSize; j++) {
             QPushButton* button = new QPushButton(this);
             button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -40,7 +38,8 @@ PuzzleProject::PuzzleProject(int boardSize,Player player,QWidget* parent)
             gridLayout->addWidget(button, i, j);
             connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
         }
-    }
+    }*/
+    createBoardLayout();
     updateBoard();
 }
 
@@ -50,23 +49,30 @@ PuzzleProject::~PuzzleProject()
 }
 
 void PuzzleProject::updateBoard() {
-    for (int i = 0; i < boardSize; i++)
-        for (int j = 0; j < boardSize; j++) {
+    const auto& grid = board->getBoard();
+
+    for (int i = 0; i < grid.size(); i++)
+        for (int j = 0; j < grid.size(); j++) {
             //buttons[i * boardSize + j]->setText(board->getBoard()[i][j] == boardSize*boardSize ? "" : QString::number(board->getBoard()[i][j]));
-            QPushButton* btn = buttons[i * boardSize + j];
-            int val = board->getBoard()[i][j];
-            btn->setText(val == boardSize * boardSize ? "" : QString::number(val));
+            QPushButton* btn = buttons[i * grid.size() + j];
+            int val = grid[i][j];
+            btn->setText(val == grid.size() * grid.size() ? "" : QString::number(val));
         }
    
-    testLabel->setText("Step:" + QString::number(board->getStep()));
+    //testLabel->setText("Step:" + QString::number(board->getStep()));
 }
 
 void PuzzleProject::onTileClicked() {
     QPushButton* clickedButton = qobject_cast<QPushButton*>(sender());
     if (!clickedButton) return;
-
     int index = buttons.indexOf(clickedButton);
-    board->move(index / boardSize, index % boardSize);
+
+
+    const auto& grid = board->getBoard();
+    board->move(index / grid.size(), index % grid.size());
+    testLabel->setText("X:" + QString::number(board->getX()) + " Y:" + QString::number(board->getY()) + " button" + QString::number(index));
+    
+   
     updateBoard();
 
     if (board->isSolved())
@@ -75,7 +81,7 @@ void PuzzleProject::onTileClicked() {
         double t = board->getTime();
         timeLabel->setText("Gratulacje! Czas:" + QString::number(t));
         QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(t));
-        player.setScore(t, boardSize);
+        player.setScore(t, board->getBoard().size());
 
     }
 }
@@ -158,5 +164,25 @@ void PuzzleProject::handleThemeToggle() {
     }
     else {
         qApp->setStyleSheet("");
+    }
+}
+
+void PuzzleProject::createBoardLayout() {
+    const auto& grid = board->getBoard();
+    buttons.clear();
+
+    while (QLayoutItem* item = gridLayout->takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
+
+    for (int i = 0; i < grid.size(); ++i) {
+        for (int j = 0; j < grid[i].size(); ++j) {
+            QPushButton* button = new QPushButton(this);
+            button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            buttons.append(button);
+            gridLayout->addWidget(button, i, j);
+            connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
+        }
     }
 }

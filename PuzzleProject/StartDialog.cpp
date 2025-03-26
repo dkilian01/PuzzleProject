@@ -34,6 +34,14 @@ StartDialog::StartDialog(QWidget* parent)
     sizeSelector->setRange(2, 10); // Zakres dozwolonych rozmiarów planszy
     sizeSelector->setValue(4);     // Domyœlna wartoœæ
 
+    QLabel* typeLabel = new QLabel("Typ planszy:", this);
+    layout->addWidget(typeLabel);
+
+    boardTypeBox = new QComboBox(this);
+    boardTypeBox->addItem("Klasyczna");
+    boardTypeBox->addItem("Heksagonalna");
+    layout->addWidget(boardTypeBox);
+
     QPushButton* startButton = new QPushButton("Start gry", this);
     connect(startButton, &QPushButton::clicked, this, &StartDialog::accept);
 
@@ -57,4 +65,7 @@ QString StartDialog::getSelectedPlayer() const {
         return playerList->currentItem()->text(); // Wybrany istniej¹cy gracz
     }
     return "Anonim"; // Domyœlna nazwa, jeœli nic nie wybrano
+}
+QString StartDialog::getBoardType() const {
+    return boardTypeBox->currentText();
 }

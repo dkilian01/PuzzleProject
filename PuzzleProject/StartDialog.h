@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QListWidget>
 #include <QDir>
+#include <QComboBox>
 class StartDialog : public QDialog {
     Q_OBJECT
 public:
@@ -13,6 +14,7 @@ public:
     int getBoardSize();
 
     QString getSelectedPlayer() const;
+    QString getBoardType() const;
 
 private slots:
     void addNewPlayer();
@@ -24,6 +26,6 @@ private:
     QLineEdit* newPlayer;
     QPushButton* startButton;
 
-
+    QComboBox* boardTypeBox;
 };
 

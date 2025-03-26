@@ -17,15 +17,16 @@ class PuzzleProject : public QMainWindow
     Q_OBJECT
 
 public:
-    PuzzleProject(int boardSize, Player player, QWidget* parent = nullptr);
+    PuzzleProject(PuzzleBase* board, Player player, QWidget* parent = nullptr);
     ~PuzzleProject();
 protected:
     void closeEvent(QCloseEvent* event)override;
 
 private:
     Ui::PuzzleProjectClass ui;
-    PuzzleBoard* board;
+    PuzzleBase* board;
     Player player;
+
     QGridLayout* gridLayout;
     QVector<QPushButton*> buttons;
 
@@ -36,6 +37,7 @@ private:
     int boardSize;
 
     void updateBoard();
+    void createBoardLayout();
 
     QPushButton* undoButton;
     QPushButton* redoButton;
@@ -44,6 +46,7 @@ private:
     QPushButton* themeButton;
     QPushButton* statsButton;
     QPushButton* rankingButton;
+
     bool darkMode = false;
 
     void createControlButtons(QVBoxLayout* layout);

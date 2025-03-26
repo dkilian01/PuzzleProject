@@ -12,8 +12,17 @@ int main(int argc, char *argv[])
         int size = dialog.getBoardSize();
         QString playerName = dialog.getSelectedPlayer();
         Player player(playerName.toStdString());
-        
-        PuzzleProject* window = new PuzzleProject(size,player);
+        QString type = dialog.getBoardType();
+        PuzzleBase* board = nullptr;
+
+        if (type == "Klasyczna") {
+            board = new PuzzleBoard(size);
+            static_cast<PuzzleBoard*>(board)->changeBoard();
+        }
+        else {
+           
+        }
+        PuzzleProject* window = new PuzzleProject(board,player);
         window->show();
         return a.exec(); // Uruchamia GUI
     }
