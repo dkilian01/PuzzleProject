@@ -18,7 +18,7 @@ private:
     chrono::time_point<chrono::steady_clock> startTime;
 public:
     PuzzleBoard(int size);
-    void move(int x, int y) override;
+    void move(int index) override;
     bool isSolved() const override;
     int getSize() { return board.size(); }
     vector<vector<int>> getBoard() const override { return board; }

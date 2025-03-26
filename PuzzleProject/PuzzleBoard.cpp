@@ -36,15 +36,34 @@ void PuzzleBoard::changeBoard()
 	}
 	startTimer();
 }
-void PuzzleBoard::move(int x, int y) {
-	if ((abs(mx - x) + abs(my - y)) == 1) {
+void PuzzleBoard::move(int index) {
+	/*if ((abs(mx - x) + abs(my - y)) == 1) {
 		stateManager.saveState(board);
 		swap(board[mx][my], board[x][y]);
 		mx = x;
-		my = y;
+		my = y;*/
 
-	}
 	
+	int size = board.size();
+	int x = index / size;
+	int y = index % size;
+
+	if ((x > 0 && board[x - 1][y] == size * size)) {// Puste pole powy¿ej  
+		stateManager.saveState(board);
+		swap(board[x - 1][y], board[x][y]);
+	}
+	if ((x < size-1 && board[x + 1][y] == size * size)) {// Puste pole ponizej  
+		stateManager.saveState(board);
+		swap(board[x + 1][y], board[x][y]);
+	}
+	if ((y > 0 && board[x][y-1] == size * size)) {// Puste pole po lewej 
+		stateManager.saveState(board);
+		swap(board[x][y - 1], board[x][y]);
+	}
+	if ((y < size - 1 && board[x][y+1] == size * size)) {// Puste pole po prawej
+		stateManager.saveState(board);
+		swap(board[x][y + 1], board[x][y]);
+	}
 }
 bool PuzzleBoard::isSolved()const {
 	int v=1;
