@@ -4,7 +4,9 @@
 #include <vector>
 #include <chrono>
 using namespace std;
-class HexBoard : public PuzzleBase {
+
+
+class HexPuzzle : public PuzzleBase {
 private:
     vector<vector<int>> board;
     GameStateManager<vector<vector<int>>> stateManager;
@@ -12,9 +14,14 @@ private:
     int size;
     chrono::time_point<chrono::steady_clock> startTime;
 
+    bool isUpTriangle(int i, int j) const;
+    bool isValid(int i, int j) const;
+    bool areNeighbors(pair<int, int> a, pair<int, int> b) const;
+    pair<int, int> indexToCoord(int index) const;
+
 public:
-    HexBoard(int size);
-    void move(int x, int y) override;
+    HexPuzzle(int size);
+    void move(int index) override;
     bool isSolved() const override;
     std::vector<std::vector<int>> getBoard() const override { return board; }
 
@@ -29,6 +36,7 @@ public:
 
     void saveState(const std::string& filename) override;
     bool loadState(const std::string& filename) override;
-    int getX() override;
-    int getY() override;
+    int getX() override { return empty1.first; }
+    int getY() override { return empty1.second; }
+
 };

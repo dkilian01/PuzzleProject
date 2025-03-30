@@ -1,6 +1,7 @@
 #include "PuzzleProject.h"
 #include "Player.h"
 #include "StartDialog.h"
+#include "HexPuzzle.h"
 #include <QtWidgets/QApplication>
 #include<iostream>
 int main(int argc, char *argv[])
@@ -19,8 +20,9 @@ int main(int argc, char *argv[])
             board = new PuzzleBoard(size);
             static_cast<PuzzleBoard*>(board)->changeBoard();
         }
-        else {
-           
+        else if (type == "Heksagonalna") {
+            board = new HexPuzzle(size);
+            static_cast<HexPuzzle*>(board)->changeBoard();
         }
         PuzzleProject* window = new PuzzleProject(board,player);
         window->show();

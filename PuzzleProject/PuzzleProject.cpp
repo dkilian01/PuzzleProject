@@ -1,6 +1,7 @@
 #include "PuzzleProject.h"
 #include "Player.h"
 #include "StatisticsDialog.h"
+#include "HexPuzzle.h"
 #include "RankDialog.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
@@ -50,17 +51,59 @@ PuzzleProject::~PuzzleProject()
 
 void PuzzleProject::updateBoard() {
     const auto& grid = board->getBoard();
+    int maxVal = grid.size() * grid.size() + 1;
+    bool isHex = dynamic_cast<HexPuzzle*>(board);
+    int index = 0;
 
-    for (int i = 0; i < grid.size(); i++)
-        for (int j = 0; j < grid.size(); j++) {
-            //buttons[i * boardSize + j]->setText(board->getBoard()[i][j] == boardSize*boardSize ? "" : QString::number(board->getBoard()[i][j]));
-            QPushButton* btn = buttons[i * grid.size() + j];
+    for (int i = 0; i < grid.size(); ++i) {
+        for (int j = 0; j < grid[i].size(); ++j) {
+            QPushButton* btn = buttons[index++];
             int val = grid[i][j];
-            btn->setText(val == grid.size() * grid.size() ? "" : QString::number(val));
+
+            bool up = false;
+            if (isHex) {
+                if (i < grid.size() / 2) up = (j % 2 == 0);
+                else up = (j % 2 == 1);
+            }
+
+            // Ustawienie maski trójk¹ta (zminimalizowany margines)
+            if (isHex) {
+                int w = btn->width();
+                int h = btn->height();
+                QPolygon triangle;
+                if (up) {
+                    triangle << QPoint(w / 2, 0) << QPoint(0, h) << QPoint(w, h);
+                }
+                else {
+                    triangle << QPoint(0, 0) << QPoint(w, 0) << QPoint(w / 2, h);
+                }
+                btn->setMask(QRegion(triangle));
+            }
+            else {
+                btn->clearMask();
+            }
+
+            if (val == maxVal - 1 || val == maxVal) {
+                btn->setText("");
+                btn->setStyleSheet("background-color: #cccccc; border: none;");
+            }
+            else {
+                QString color = up ? "#4CAF50" : "#2196F3";
+                btn->setText(QString::number(val));
+                btn->setStyleSheet(
+                    "background-color: " + color + ";"
+                    "color: white;"
+                    "font-weight: bold;"
+                    "font-size: 14px;"
+                    "border: none;"
+                    "margin: 0px;"
+                    "padding: 0px;"
+                );
+            }
         }
-   
-    //testLabel->setText("Step:" + QString::number(board->getStep()));
+    }
 }
+
 
 void PuzzleProject::onTileClicked() {
     QPushButton* clickedButton = qobject_cast<QPushButton*>(sender());
@@ -176,13 +219,26 @@ void PuzzleProject::createBoardLayout() {
         delete item;
     }
 
+    gridLayout->setSpacing(0); 
+
+    int maxWidth = 0;
+    for (const auto& row : grid)
+        maxWidth = std::max(maxWidth, static_cast<int>(row.size()));
+
+    int index = 0;
     for (int i = 0; i < grid.size(); ++i) {
-        for (int j = 0; j < grid[i].size(); ++j) {
+        int rowSize = grid[i].size();
+        int offset = (maxWidth - rowSize) / 2;
+
+        for (int j = 0; j < rowSize; ++j) {
             QPushButton* button = new QPushButton(this);
-            button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            button->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+            button->setMinimumSize(40, 40);  // dopasowanie
             buttons.append(button);
-            gridLayout->addWidget(button, i, j);
+            gridLayout->addWidget(button, i, j + offset);
             connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
         }
     }
+
+    this->update(); // dla masek
 }
