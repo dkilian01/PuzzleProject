@@ -37,6 +37,8 @@ private:
     int boardSize;
 
     void updateBoard();
+    void updateBoardClassic();
+    void updateBoardHex();
     void createBoardLayout();
 
     QPushButton* undoButton;

@@ -37,5 +37,6 @@ public:
     bool loadState(const string& filename) override;
     int getX()override;
     int getY()override;
+    
 };
 

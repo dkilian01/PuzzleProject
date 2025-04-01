@@ -37,11 +37,6 @@ void PuzzleBoard::changeBoard()
 	startTimer();
 }
 void PuzzleBoard::move(int index) {
-	/*if ((abs(mx - x) + abs(my - y)) == 1) {
-		stateManager.saveState(board);
-		swap(board[mx][my], board[x][y]);
-		mx = x;
-		my = y;*/
 
 	
 	int size = board.size();

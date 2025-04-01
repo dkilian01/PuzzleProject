@@ -1,50 +1,90 @@
-#include "HexPuzzle.h"
+﻿#include "HexPuzzle.h"
 #include <random>
 #include <algorithm>
 #include <ctime>
 #include <fstream>
+#include <QDebug>
+#include <QFile>
+#include <QTextStream>
 using namespace std;
 
 HexPuzzle::HexPuzzle(int size) : size(size) {
     int rows = size - 1;
     board.resize(rows);
-    int value = 1;
 
+    tileAmount = 1;
     for (int i = 0; i < rows; ++i) {
-        int rowLength = (i == 0 || i == rows - 1) ? size : size + 2;
+        int layer = (i < rows / 2) ? i : rows - 1 - i;
+        int rowLength = size + 2 * layer;
+
         board[i].resize(rowLength);
         for (int j = 0; j < rowLength; ++j) {
-            board[i][j] = value++;
+            board[i][j] = tileAmount++;
         }
     }
+    int lastRow = rows - 1;
+    int lastCol = board[lastRow].size();
 
-    // Dwa ostatnie warto�ci (puste pola)
-    board[rows - 1][board[rows - 1].size() - 2] = size * size - 1;
-    board[rows - 1][board[rows - 1].size() - 1] = size * size;
+    empty1 = { lastRow, lastCol - 2 };
+    empty2 = { lastRow, lastCol - 1 };
 
-    
+    board[empty1.first][empty1.second] = tileAmount - 2;
+    board[empty2.first][empty2.second] = tileAmount - 1;
 }
 void HexPuzzle::move(int index) {
-    auto [x, y] = indexToCoord(index);
-    if (!isValid(x, y)) return;
-    if (board[x][y] == size * size || board[x][y] == (size * size - 1)) return;
+    index++;
+    QFile file("debug_log.txt");
+    file.open(QIODevice::Append | QIODevice::Text);
+    QTextStream out(&file);
+    out << board[3].size() << "\n";
+    auto from = indexToCoord(index);
+    if (!isValid(from.first, from.second)) {
+        out << "Niepoprawna pozycja indeksu: " << index << "\n";
+        return;
+    }
 
-    stateManager.saveState(board);
+    int val = board[from.first][from.second];
+    int emptyVal1 = tileAmount - 2;
+    int emptyVal2 = tileAmount - 1;
 
-    for (int i = 0; i < board.size(); ++i) {
-        for (int j = 0; j < board[i].size(); ++j) {
-            int val = board[i][j];
-            if ((val == size * size || val == size * size - 1) &&
-                isUpTriangle(i, j) == isUpTriangle(x, y) &&
-                areNeighbors({ x, y }, { i, j }))
+    if (val == emptyVal1 || val == emptyVal2) {
+        out << "Kliknięto na puste pole [" << from.first << "," << from.second << "]\n";
+        return;
+    }
+
+    // Log: podstawowe dane
+    out << " RUCH Z [" << from.first << "," << from.second << "] = " << val << "\n" << isUpTriangle(from.first, from.second) << " " << "\n";
+    out << "    Puste 1: [" << empty1.first << "," << empty1.second << "] = " << board[empty1.first][empty1.second] << "\n";
+    out << "    Puste 2: [" << empty2.first << "," << empty2.second << "] = " << board[empty2.first][empty2.second] << "\n";
+
+    // Log: sąsiedzi klikniętego pola
+    out << "    Sąsiedzi klikniętego pola: ";
+    for (const auto& neighbor : getTriangleNeighbors(from.first, from.second)) {
+        out <<"\n"<< isValid(neighbor.first, neighbor.second) << " first" << neighbor.first << "  second:" << neighbor.second << "\n";
+        if (isValid(neighbor.first, neighbor.second)) {
+            out << "[" << neighbor.first << "," << neighbor.second << "]=" << board[neighbor.first][neighbor.second] << " ";
+        }
+    }
+    out << "\n";
+
+    pair<int, int> empties[2] = { empty1, empty2 };
+
+    for (const auto& neighbor : getTriangleNeighbors(from.first, from.second)) {
+        if (board[neighbor.first][neighbor.second] == tileAmount-2 || board[neighbor.first][neighbor.second] == tileAmount - 1)
+        {
+            for (const auto& neighbor2 : getTriangleNeighbors(neighbor.first, neighbor.second))
             {
-                swap(board[x][y], board[i][j]);
-                return;
+                out << "\nPIERWSZY:::::" << neighbor2.first << ":" << neighbor2.second;
+                if (board[neighbor2.first][neighbor2.second] == tileAmount-2 || board[neighbor2.first][neighbor2.second] == tileAmount - 1)
+                {
+                    out << "\nDRUGI::::" << neighbor2.first << ":" << neighbor2.second;
+                    swap(board[from.first][from.second], board[neighbor2.first][neighbor2.second]);
+                }
             }
         }
     }
-}
 
+}
 bool HexPuzzle::isSolved() const {
     int val = 1;
     for (const auto& row : board)
@@ -57,7 +97,7 @@ void HexPuzzle::changeBoard() {
     vector<int> tiles;
     for (auto& row : board)
         for (int val : row)
-            if (val != size * size && val != size * size - 1)
+            if (val != size * size - 2 && val != size * size - 1)
                 tiles.push_back(val);
 
     shuffle(tiles.begin(), tiles.end(), default_random_engine(random_device{}()));
@@ -65,13 +105,13 @@ void HexPuzzle::changeBoard() {
     int idx = 0;
     for (auto& row : board)
         for (int& val : row)
-            if (val != size * size && val != size * size - 1)
+            if (val != size * size - 2 && val != size * size - 1)
                 val = tiles[idx++];
 
-    // Puste pola s� zawsze na ko�cu w ostatnim rz�dzie
+    // Puste pola są zawsze na końcu w ostatnim rzędzie
     int r = board.size() - 1;
-    board[r][board[r].size() - 2] = size * size - 1;
-    board[r][board[r].size() - 1] = size * size;
+    board[r][board[r].size() - 2] = size * size - 2;
+    board[r][board[r].size() - 1] = size * size - 1;
 
     stateManager.saveState(board);
     startTimer();
@@ -107,32 +147,72 @@ bool HexPuzzle::loadState(const string& filename) {
     return stateManager.loadFromFile(filename, board);
 }
 bool HexPuzzle::isUpTriangle(int i, int j) const {
-    return (i + j) % 2 == 0;
+    if (i <= (4 / 2) - 1)
+    {
+        return(j % 2 == 0);
+    }
+    return(j % 2 == 1);
 }
 
 bool HexPuzzle::isValid(int i, int j) const {
     return i >= 0 && i < board.size() && j >= 0 && j < board[i].size();
 }
-
-bool HexPuzzle::areNeighbors(pair<int, int> a, pair<int, int> b) const {
-    static const vector<pair<int, int>> dirs = {
-        {-1, 0}, {1, 0}, {0, -1}, {0, 1},
-        {-1, 1}, {1, -1}
-    };
-    for (const auto& [dx, dy] : dirs) {
-        if (a.first + dx == b.first && a.second + dy == b.second)
-            return true;
-    }
-    return false;
-}
-
 pair<int, int> HexPuzzle::indexToCoord(int index) const {
-    int current = 0;
-    for (int i = 0; i < board.size(); ++i) {
-        if (index < current + board[i].size()) {
-            return { i, index - current };
+    int rows = size - 1;
+    int currentIndex = 1; 
+    for (int x = 0; x < rows; ++x) {
+        int len = (x < rows / 2) ? size + 2 * x : size + 2 * (rows - 1 - x);
+        if (index < currentIndex + len) {
+            int y = index - currentIndex;
+            return { x, y };
         }
-        current += board[i].size();
+        currentIndex += len;
     }
     return { -1, -1 };
+}
+int HexPuzzle::getTileAmount()
+{
+    return tileAmount;
+}
+std::vector<std::pair<int, int>> HexPuzzle::getTriangleNeighbors(int x, int y) const {
+    std::vector<std::pair<int, int>> neighbors;
+    if (!isValid(x, y)) return neighbors;
+
+    bool up = isUpTriangle(x, y);
+
+    if (isValid(x, y - 1)) neighbors.emplace_back(x, y - 1);
+    if (isValid(x, y + 1)) neighbors.emplace_back(x, y + 1);
+    int s = size;
+    if (up) {
+        if (x == ((size - 1) / 2) - 1)
+        {
+            if (isValid(x + 1, y)) neighbors.emplace_back(x + 1, y);
+        }
+        else if (x<((size-2)/2))
+        {
+            if (isValid(x + 1, y+1)) neighbors.emplace_back(x + 1, y+1); 
+        }
+        else if (x > ((size - 2) / 2))
+        {
+            if (isValid(x + 1, y-1)) neighbors.emplace_back(x + 1, y - 1);
+        }
+                
+    }
+    else {
+        if (x == ((size - 1) / 2))
+        {
+            if (isValid(x - 1, y)) neighbors.emplace_back(x - 1, y);
+        }
+        else if (x <= ((size - 2) / 2))
+        {
+            if (isValid(x - 1, y-1)) neighbors.emplace_back(x - 1, y - 1);
+        }
+        else if(x > ((size - 2) / 2))
+        {
+            if (isValid(x - 1, y+1)) neighbors.emplace_back(x - 1, y + 1);
+        }
+
+    }
+
+    return neighbors;
 }

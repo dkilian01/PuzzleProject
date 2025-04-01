@@ -12,12 +12,14 @@ private:
     GameStateManager<vector<vector<int>>> stateManager;
     pair<int, int> empty1, empty2;
     int size;
+    int tileAmount;
+    
     chrono::time_point<chrono::steady_clock> startTime;
 
     bool isUpTriangle(int i, int j) const;
     bool isValid(int i, int j) const;
-    bool areNeighbors(pair<int, int> a, pair<int, int> b) const;
     pair<int, int> indexToCoord(int index) const;
+   
 
 public:
     HexPuzzle(int size);
@@ -38,5 +40,7 @@ public:
     bool loadState(const std::string& filename) override;
     int getX() override { return empty1.first; }
     int getY() override { return empty1.second; }
+    int getTileAmount();
 
+    vector<pair<int, int>> getTriangleNeighbors(int x, int y) const;
 };

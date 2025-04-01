@@ -50,9 +50,45 @@ PuzzleProject::~PuzzleProject()
 }
 
 void PuzzleProject::updateBoard() {
+    if (dynamic_cast<HexPuzzle*>(board)) {
+        updateBoardHex();
+    }
+    else {
+        updateBoardClassic();
+    }
+    
+}
+void PuzzleProject::updateBoardClassic()
+{
     const auto& grid = board->getBoard();
-    int maxVal = grid.size() * grid.size() + 1;
-    bool isHex = dynamic_cast<HexPuzzle*>(board);
+    int index = 0;
+    int maxV = grid.size() * grid.size();
+    //testLabel->setText(QString::number(grid.size()));
+    for (int i = 0; i < grid.size(); i++) {
+        for (int j = 0; j < grid.size(); j++) {
+            QPushButton* btn = buttons[index++];
+            int val = grid[i][j];
+
+            if (val == maxV) {
+                btn->setText("");
+                btn->setStyleSheet("background-color: #cccccc;");
+            }
+            else {
+                btn->setText(QString::number(val));
+                btn->setStyleSheet("background-color: #aaffaa;");
+            }
+        }
+    }
+}
+void PuzzleProject::updateBoardHex() {
+
+    const auto& grid = board->getBoard();
+    //testLabel->setText(QString::number(grid.size()));
+    int maxVal = 0;
+    if (HexPuzzle* h = dynamic_cast<HexPuzzle*>(board)) {
+        maxVal=h->getTileAmount();
+    }
+    //maxVal = ((grid.size()) * ((grid.size() * 3) )) / 2; // wzór na liczbe pol w polu hexagonalnym
     int index = 0;
 
     for (int i = 0; i < grid.size(); ++i) {
@@ -60,31 +96,22 @@ void PuzzleProject::updateBoard() {
             QPushButton* btn = buttons[index++];
             int val = grid[i][j];
 
-            bool up = false;
-            if (isHex) {
-                if (i < grid.size() / 2) up = (j % 2 == 0);
-                else up = (j % 2 == 1);
-            }
+            
+            bool up = (i < grid.size() / 2) ? (j % 2 == 0) : (j % 2 == 1);
 
-            // Ustawienie maski trójk¹ta (zminimalizowany margines)
-            if (isHex) {
-                int w = btn->width();
-                int h = btn->height();
-                QPolygon triangle;
-                if (up) {
-                    triangle << QPoint(w / 2, 0) << QPoint(0, h) << QPoint(w, h);
-                }
-                else {
-                    triangle << QPoint(0, 0) << QPoint(w, 0) << QPoint(w / 2, h);
-                }
+            // Maska trójk¹ta
+            int w = btn->width();
+            int h = btn->height();
+            QPolygon triangle;
+            if (w > 0 && h > 0) {
+                triangle = up
+                    ? QPolygon({ QPoint(w / 2, 0), QPoint(0, h), QPoint(w, h) })
+                    : QPolygon({ QPoint(0, 0), QPoint(w, 0), QPoint(w / 2, h) });
                 btn->setMask(QRegion(triangle));
             }
-            else {
-                btn->clearMask();
-            }
 
-            if (val == maxVal - 1 || val == maxVal) {
-                btn->setText("");
+            if (val == maxVal-2 || val == maxVal - 1) {
+                btn->setText(QString::number(val));
                 btn->setStyleSheet("background-color: #cccccc; border: none;");
             }
             else {
@@ -94,11 +121,9 @@ void PuzzleProject::updateBoard() {
                     "background-color: " + color + ";"
                     "color: white;"
                     "font-weight: bold;"
-                    "font-size: 14px;"
+                    "font-size: 16px;"
                     "border: none;"
-                    "margin: 0px;"
-                    "padding: 0px;"
-                );
+                    "margin: 0px; padding: 0px;");
             }
         }
     }
@@ -219,7 +244,7 @@ void PuzzleProject::createBoardLayout() {
         delete item;
     }
 
-    gridLayout->setSpacing(0); 
+    gridLayout->setSpacing(1); // ciasno!
 
     int maxWidth = 0;
     for (const auto& row : grid)
@@ -232,13 +257,13 @@ void PuzzleProject::createBoardLayout() {
 
         for (int j = 0; j < rowSize; ++j) {
             QPushButton* button = new QPushButton(this);
-            button->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-            button->setMinimumSize(40, 40);  // dopasowanie
+            button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            button->setMinimumSize(50, 50); // wiêksze trójk¹ty
             buttons.append(button);
             gridLayout->addWidget(button, i, j + offset);
             connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
         }
     }
 
-    this->update(); // dla masek
+    this->update(); // dla maski
 }
