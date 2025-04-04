@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QTableWidget>
 #include "Player.h"
 
 class StatisticsDialog : public QDialog {

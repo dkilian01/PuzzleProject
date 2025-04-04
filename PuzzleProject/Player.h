@@ -7,13 +7,13 @@ using namespace std;
 class Player
 {
 private:
-	vector<pair<double,int>> scores;
+	vector<tuple<double, int, string>> scores;
 	string name;
 public:
 	Player(string name);
 	~Player();
-	void setScore(double time, int size);
-	vector<pair<double, int>> getScores();
+	void setScore(double time, int size, const string& boardType);
+	vector<tuple<double, int,string>> getScores() const;
 	string getPlayerName() const;
 	void setPlayerName(string name);
 	void saveToFile();

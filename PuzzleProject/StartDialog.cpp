@@ -1,6 +1,7 @@
 #include "StartDialog.h"
 #include <QLabel>
 #include <QHBoxLayout>
+#include <qmessagebox.h>
 
 StartDialog::StartDialog(QWidget* parent)
     : QDialog(parent)
@@ -43,10 +44,12 @@ StartDialog::StartDialog(QWidget* parent)
     layout->addWidget(boardTypeBox);
 
     QPushButton* startButton = new QPushButton("Start gry", this);
-    connect(startButton, &QPushButton::clicked, this, &StartDialog::accept);
+    connect(startButton, &QPushButton::clicked, this, &StartDialog::validateAndAccept);
 
     layout->addWidget(sizeSelector);
     layout->addWidget(startButton);
+    connect(boardTypeBox, &QComboBox::currentTextChanged, this, &StartDialog::updateSizeRange);
+    updateSizeRange(boardTypeBox->currentText());
 }
 
 int StartDialog::getBoardSize() {
@@ -68,4 +71,30 @@ QString StartDialog::getSelectedPlayer() const {
 }
 QString StartDialog::getBoardType() const {
     return boardTypeBox->currentText();
+}
+void StartDialog::updateSizeRange(const QString& type) {
+    if (type == "Heksagonalna") {
+        sizeSelector->setMinimum(5);
+        sizeSelector->setMaximum(9);
+        sizeSelector->setSingleStep(2);
+        if (sizeSelector->value() % 2 == 0)
+            sizeSelector->setValue(3); // ustawienie na najni¿sz¹ wartoœæ nieparzyst¹
+    }
+    else {
+        sizeSelector->setMinimum(3);
+        sizeSelector->setMaximum(10);
+        sizeSelector->setSingleStep(1);
+    }
+}
+void StartDialog::validateAndAccept() {
+    QString type = boardTypeBox->currentText();
+    int val = sizeSelector->value();
+
+    if (type == "Heksagonalna") {
+        if (val < 3 || val > 9 || val % 2 == 0) {
+            QMessageBox::warning(this, "B³¹d", "Dla planszy heksagonalnej dozwolone s¹ tylko nieparzyste rozmiary od 3 do 9.");
+            return;
+        }
+    }
+    accept(); // tylko jeœli wszystko ok
 }

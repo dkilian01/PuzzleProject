@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QCloseEvent>
+#include<string>
 #include "ui_PuzzleProject.h"
 #include "PuzzleBoard.h"
 #include "Player.h"
@@ -48,6 +49,7 @@ private:
     QPushButton* themeButton;
     QPushButton* statsButton;
     QPushButton* rankingButton;
+    QPushButton* backButton;
 
     bool darkMode = false;
 
@@ -62,4 +64,7 @@ private slots:
     void handleSave();
     void handleLoad();
     void handleThemeToggle();
+    void handleBackToMenu();
+signals:
+    void returnToMenu();
 };

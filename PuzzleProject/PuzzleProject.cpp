@@ -5,7 +5,7 @@
 #include "RankDialog.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
-
+using namespace std;
 PuzzleProject::PuzzleProject(PuzzleBase* board,Player player,QWidget* parent)
     : QMainWindow(parent),board(board),player(player)
 {
@@ -149,7 +149,8 @@ void PuzzleProject::onTileClicked() {
         double t = board->getTime();
         timeLabel->setText("Gratulacje! Czas:" + QString::number(t));
         QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(t));
-        player.setScore(t, board->getBoard().size());
+
+        player.setScore(t, board->getBoard().size(), (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic"));
 
     }
 }
@@ -172,6 +173,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     themeButton = new QPushButton("Zmien motyw", this);
     statsButton = new QPushButton("Statystyki gracza", this);
     rankingButton = new QPushButton("Ranking graczy", this);
+    backButton = new QPushButton("Powrot do menu", this);
 
     layout->addWidget(undoButton);
     layout->addWidget(redoButton);
@@ -180,12 +182,14 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     layout->addWidget(themeButton);
     layout->addWidget(statsButton);
     layout->addWidget(rankingButton);
+    layout->addWidget(backButton);
 
     connect(undoButton, &QPushButton::clicked, this, &PuzzleProject::handleUndo);
     connect(redoButton, &QPushButton::clicked, this, &PuzzleProject::handleRedo);
     connect(saveButton, &QPushButton::clicked, this, &PuzzleProject::handleSave);
     connect(loadButton, &QPushButton::clicked, this, &PuzzleProject::handleLoad);
     connect(themeButton, &QPushButton::clicked, this, &PuzzleProject::handleThemeToggle);
+    connect(backButton, &QPushButton::clicked, this, &PuzzleProject::handleBackToMenu);
     connect(statsButton, &QPushButton::clicked, [this]() {
         StatisticsDialog dlg(player, this);
         dlg.exec();
@@ -194,8 +198,13 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
         RankDialog dlg(this);
         dlg.exec();
         });
-}
 
+}
+void PuzzleProject::handleBackToMenu() {
+    player.saveToFile(); // zapisz dane gracza
+    emit returnToMenu(); // sygnalizuj powrót do menu
+    this->close();
+}
 void PuzzleProject::handleUndo() {
     if (board->canUndo()) {
         board->undoMove();
@@ -211,12 +220,16 @@ void PuzzleProject::handleRedo() {
 }
 
 void PuzzleProject::handleSave() {
-    board->saveState("savegame.txt");
+    
+    board->saveState(player.getPlayerName() + "_"+ to_string(board->getBoard().size())+"_"
+    + (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic") +"_save.txt");
     QMessageBox::information(this, "Zapisano", "Stan gry zosta³ zapisany.");
 }
 
 void PuzzleProject::handleLoad() {
-    if (board->loadState("savegame.txt")) {
+    if (board->loadState(player.getPlayerName() + "_" + to_string(board->getBoard().size()) + "_"
+        + (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic") + "_save.txt"))
+    {
         updateBoard();
         QMessageBox::information(this, "Wczytano", "Stan gry zosta³ wczytany.");
     }
@@ -244,7 +257,7 @@ void PuzzleProject::createBoardLayout() {
         delete item;
     }
 
-    gridLayout->setSpacing(1); // ciasno!
+    gridLayout->setSpacing(1); 
 
     int maxWidth = 0;
     for (const auto& row : grid)
@@ -265,5 +278,5 @@ void PuzzleProject::createBoardLayout() {
         }
     }
 
-    this->update(); // dla maski
+    this->update();
 }

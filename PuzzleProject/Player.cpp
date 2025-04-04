@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include<sstream>
+#include <tuple>
 Player::Player(string name):scores()
 {
 	this->name = name;
@@ -12,11 +13,11 @@ Player::~Player()
 {
 
 }
-void Player::setScore(double time, int size)
+void Player::setScore(double time, int size, const string& boardType)
 {
-    scores.push_back({ time,size });
+    scores.emplace_back(time, size, boardType);
 }
-vector<pair<double, int>> Player::getScores() {
+vector<tuple<double, int,string>> Player::getScores() const{
 	return scores;
 }
 void Player::setPlayerName(string name)
@@ -30,8 +31,8 @@ string Player::getPlayerName() const
 void Player::saveToFile()
 {
     ofstream file(name + "_scores.txt",ios::out);
-	for (const auto& score : scores) {
-        file << score.first << " " << score.second << endl;
+    for (const auto& score : scores) {
+        file << get<0>(score) << " " << get<1>(score) << " " << get<2>(score) << "\n";
     }
 
     file.close();
@@ -44,9 +45,9 @@ void Player::loadFromFile()
     scores.clear();
     double time;
     int size;
-
-    while (file >> time >> size) {
-        scores.push_back({ time, size });
+    string type;
+    while (file >> time >> size>>type) {
+        scores.push_back({ time, size,type });
     }
 
     file.close();
@@ -55,7 +56,7 @@ void Player::loadFromFile()
 double Player::getAverageTime() const {
     if (scores.empty()) return 0.0;
     double sum = 0;
-    for (const auto& s : scores) sum += s.first;
+    for (const auto& s : scores) sum += get<0>(s);
     return sum / scores.size();
 }
 
@@ -65,10 +66,10 @@ int Player::getGamesPlayed() const {
 
 double Player::getBestTime() const {
     if (scores.empty()) return 0.0;
-    double best = scores[0].first;
+    double best = get<0>(scores[0]);
     for (const auto& s : scores) {
-        if (s.first < best)
-            best = s.first;
+        if (get<0>(s) < best)
+            best = get<0>(s);
     }
     return best;
 }

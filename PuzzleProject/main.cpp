@@ -4,12 +4,14 @@
 #include "HexPuzzle.h"
 #include <QtWidgets/QApplication>
 #include<iostream>
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
 
-    StartDialog dialog;
-    if (dialog.exec() == QDialog::Accepted) {
+    while (true) {
+        StartDialog dialog;
+        if (dialog.exec() != QDialog::Accepted)break;
+
         int size = dialog.getBoardSize();
         QString playerName = dialog.getSelectedPlayer();
         Player player(playerName.toStdString());
@@ -18,15 +20,23 @@ int main(int argc, char *argv[])
 
         if (type == "Klasyczna") {
             board = new PuzzleBoard(size);
-            static_cast<PuzzleBoard*>(board)->changeBoard();
+            //static_cast<PuzzleBoard*>(board)->changeBoard();
         }
         else if (type == "Heksagonalna") {
             board = new HexPuzzle(size);
-            static_cast<HexPuzzle*>(board)->changeBoard();
+            //static_cast<HexPuzzle*>(board)->changeBoard();
         }
-        PuzzleProject* window = new PuzzleProject(board,player);
+        PuzzleProject* window = new PuzzleProject(board, player);
+
+        bool powrotDoMenu = false;
+        QObject::connect(window, &PuzzleProject::returnToMenu, [&]() {
+            powrotDoMenu = true;
+            window->close();  // zamykamy okno gry
+            });
         window->show();
-        return a.exec(); // Uruchamia GUI
+        a.exec(); // Uruchamia GUI    
+        if (!powrotDoMenu)
+            break;  // u¿ytkownik zamkn¹³ okno bez chêci powrotu
     }
-    
+    return 0;
 }

@@ -18,6 +18,8 @@ public:
 
 private slots:
     void addNewPlayer();
+    void updateSizeRange(const QString& type);
+    void validateAndAccept();
 
 private:
     QSpinBox* sizeSelector;

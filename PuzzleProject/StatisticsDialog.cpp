@@ -6,13 +6,48 @@ StatisticsDialog::StatisticsDialog(const Player& player, QWidget* parent)
     setWindowTitle("Statystyki gracza");
     QVBoxLayout* layout = new QVBoxLayout(this);
 
-    QLabel* nameLabel = new QLabel("Gracz: " + QString::fromStdString(player.getPlayerName()), this);
-    QLabel* gamesLabel = new QLabel("Rozegrane gry: " + QString::number(player.getGamesPlayed()), this);
-    QLabel* bestLabel = new QLabel("Najlepszy czas: " + QString::number(player.getBestTime()) + " s", this);
-    QLabel* avgLabel = new QLabel("Œredni czas: " + QString::number(player.getAverageTime()) + " s", this);
+    QTableWidget* table = new QTableWidget(this);
+    layout->addWidget(table);
 
-    layout->addWidget(nameLabel);
-    layout->addWidget(gamesLabel);
-    layout->addWidget(bestLabel);
-    layout->addWidget(avgLabel);
+    QLabel* nameLabel = new QLabel("Gracz: " + QString::fromStdString(player.getPlayerName()), this);
+
+
+    auto scores = player.getScores();
+
+   
+    map<pair<string, int>, tuple<int, double, double>> stats;
+
+    for (const auto& s : scores) {
+        double time = get<0>(s);
+        int size = get<1>(s);
+        string type = get<2>(s);
+        auto key = make_pair(type, size);
+
+        if (stats.count(key) == 0)
+            stats[key] = { 1, time, time };
+        else {
+            auto& [count, sum, best] = stats[key];
+            count++;
+            sum += time;
+            if (time < best) best = time;
+        }
+    }
+    table->setRowCount(stats.size());
+    table->setColumnCount(5);
+    table->setHorizontalHeaderLabels({ "Typ planszy", "Rozmiar", "Rozegrane gry", "Najlepszy czas", "Œredni czas" });
+
+    int row = 0;
+    for (const auto& [key, val] : stats) {
+        const auto& [type, size] = key;
+        const auto& [count, sum, best] = val;
+
+        table->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(type)));
+        table->setItem(row, 1, new QTableWidgetItem(QString::number(size)));
+        table->setItem(row, 2, new QTableWidgetItem(QString::number(count)));
+        table->setItem(row, 3, new QTableWidgetItem(QString::number(best)));
+        table->setItem(row, 4, new QTableWidgetItem(QString::number(sum / count)));
+        row++;
+    }
+
+    table->resizeColumnsToContents();
 }
