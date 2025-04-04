@@ -94,25 +94,73 @@ bool HexPuzzle::isSolved() const {
 }
 
 void HexPuzzle::changeBoard() {
-    vector<int> tiles;
-    for (auto& row : board)
-        for (int val : row)
-            if (val != size * size - 2 && val != size * size - 1)
-                tiles.push_back(val);
+    QFile file("debug_log.txt");
+    file.open(QIODevice::Append | QIODevice::Text);
+    QTextStream out(&file);
+    vector<int> tiles1, tiles2;
 
-    shuffle(tiles.begin(), tiles.end(), default_random_engine(random_device{}()));
+    int rows = 0, s = size;
+    while (rows <= size-2)
+    {
+        int cels = board[rows].size();
+        if (rows<(size-1)/2)
+        {
+            for (int i = 0; i < cels; i++)
+            {
 
-    int idx = 0;
-    for (auto& row : board)
-        for (int& val : row)
-            if (val != size * size - 2 && val != size * size - 1)
-                val = tiles[idx++];
+                    if (i % 2 == 0)tiles1.push_back(board[rows][i]);
+                    else tiles2.push_back(board[rows][i]);
+                
+            }
+        }
+        else
+        {
+            for (int i = 0; i < cels; i++)
+            {            
 
-    // Puste pola są zawsze na końcu w ostatnim rzędzie
-    int r = board.size() - 1;
-    board[r][board[r].size() - 2] = size * size - 2;
-    board[r][board[r].size() - 1] = size * size - 1;
-
+                    if (i % 2 == 1)tiles1.push_back(board[rows][i]);
+                    else tiles2.push_back(board[rows][i]);
+                
+            }
+        }
+        rows++;
+    }
+    for (const auto& cell : tiles1)
+    {
+        out << "  " << cell;
+    }
+    out << "\n";
+    for (const auto& cell : tiles2)
+    {
+        out << "  " << cell;
+    }
+    shuffle(tiles1.begin(), tiles1.end(), default_random_engine(random_device{}()));
+    shuffle(tiles2.begin(), tiles2.end(), default_random_engine(random_device{}()));
+    int s1 = tiles1.size(), s2 = tiles2.size();
+    int index1 = 0,index2=0;
+    for (int i = 0; i < size-1; i++) {
+        for (int j = 0; j < board[i].size(); j++) {
+            if (i < (size - 1) / 2)
+            {
+                if (j % 2 == 0)board[i][j] = tiles1[index1++];
+                else board[i][j] = tiles2[index2++];
+            }
+            else
+            {
+                if (j % 2 == 1)board[i][j] = tiles1[index1++];
+                else board[i][j] = tiles2[index2++];
+            }
+            if (board[i][j] == tileAmount - 1)empty1 = { i,j };
+            if (board[i][j] == tileAmount - 2)empty2 = { i,j };
+        }
+    }
+    for (const auto& neighbor2 : getTriangleNeighbors(empty1.first, empty1.second))
+    {
+        if (board[neighbor2.first][neighbor2.second] != tileAmount - 2)
+        {
+            swap(board[empty2.first][empty2.second], board[neighbor2.first][neighbor2.second]);
+        }
+    }
     stateManager.saveState(board);
     startTimer();
 }

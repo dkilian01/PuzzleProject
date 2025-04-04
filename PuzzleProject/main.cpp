@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         }
         else if (type == "Heksagonalna") {
             board = new HexPuzzle(size);
-            static_cast<HexPuzzle*>(board);
+            static_cast<HexPuzzle*>(board)->changeBoard();
         }
         PuzzleProject* window = new PuzzleProject(board,player);
         window->show();

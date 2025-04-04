@@ -1,916 +1,31 @@
-5
- RUCH Z [0,3] = 4
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:2
-[0,2]=23 
-1 first0  second:4
-[0,4]=5 
-
-PIERWSZY:::::0:1
-DRUGI::::0:1
-PIERWSZY:::::0:3
-DRUGI::::0:3
-PIERWSZY:::::1:3Ruch niedozwolony z pola 4 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,1] = 4
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:0
-[0,0]=1 
-1 first0  second:2
-[0,2]=23 
-
-PIERWSZY:::::0:1
-PIERWSZY:::::0:3
-DRUGI::::0:3
-PIERWSZY:::::1:3Ruch niedozwolony z pola 4 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,3] = 4
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:2
-[0,2]=23 
-1 first0  second:4
-[0,4]=5 
-
-PIERWSZY:::::0:1
-DRUGI::::0:1
-PIERWSZY:::::0:3
-DRUGI::::0:3
-PIERWSZY:::::1:3Ruch niedozwolony z pola 4 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,3] = 2
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=3 
-1 first1  second:4
-[1,4]=10 
-Ruch niedozwolony z pola 2 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,3] = 2
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=3 
-1 first1  second:4
-[1,4]=10 
-Ruch niedozwolony z pola 2 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,4] = 5
+  1  3  5  6  8  10  12  14  16  18  21  23
+  2  4  7  9  11  13  15  17  19  20  22  24  1  3  5  6  8  10  12  14  16  18  21  23
+  2  4  7  9  11  13  15  17  19  20  22  24  1  3  5  6  8  10  12  14  16  18  21  23
+  2  4  7  9  11  13  15  17  19  20  22  24  1  3  5  6  8  10  12  14  16  18  21  23
+  2  4  7  9  11  13  15  17  19  20  22  245
+ RUCH Z [0,4] = 6
 1 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
+    Puste 1: [0,3] = 24
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
 1 first0  second:3
 [0,3]=24 
 1 first1  second:5
-[1,5]=11 
-
-PIERWSZY:::::0:2
-DRUGI::::0:2
-PIERWSZY:::::0:4
-DRUGI::::0:4Ruch niedozwolony z pola 5 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,5] = 11
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:4
-[1,4]=10 
-1 first1  second:6
-[1,6]=12 
-Ruch niedozwolony z pola 11 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,5] = 11
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:4
-[1,4]=10 
-1 first1  second:6
-[1,6]=12 
-Ruch niedozwolony z pola 11 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,5] = 11
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:4
-[1,4]=10 
-1 first1  second:6
-[1,6]=12 
-Ruch niedozwolony z pola 11 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=2 
-1 first1  second:5
-[1,5]=11 
-1 first2  second:4
-[2,4]=17 
-Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,1] = 7
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:0
-[1,0]=6 
-1 first1  second:2
-[1,2]=3 
-Ruch niedozwolony z pola 7 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,2] = 9
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:1
-[2,1]=8 
-1 first2  second:3
-[2,3]=16 
-1 first1  second:2
-[1,2]=3 
-Ruch niedozwolony z pola 9 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,2] = 9
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:1
-[2,1]=8 
-1 first2  second:3
-[2,3]=16 
-1 first1  second:2
-[1,2]=3 
-Ruch niedozwolony z pola 9 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,1] = 4
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:0
-[0,0]=1 
-1 first0  second:2
-[0,2]=5 
-Ruch niedozwolony z pola 4 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,1] = 7
-0 
-    Puste 1: [3,3] = 21
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:0
-[1,0]=6 
-1 first1  second:2
-[1,2]=3 
-Ruch niedozwolony z pola 7 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,1] = 7
-0 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first1  second:0
-[1,0]=6 
-1 first1  second:2
-[1,2]=8 
-Ruch niedozwolony z pola 7 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [3,2] = 22
-0 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first3  second:1
-[3,1]=21 
-1 first3  second:3
-[3,3]=23 
-1 first2  second:3
-[2,3]=16 
-
-PIERWSZY:::::3:2
-PIERWSZY:::::3:4
-DRUGI::::3:4Ruch niedozwolony z pola 22 (żaden układ nie spełnia warunków)
-
-5
-Kliknięto na puste pole [3,3]
-5
- RUCH Z [3,2] = 22
-0 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first3  second:1
-[3,1]=21 
-1 first3  second:3
-[3,3]=23 
-1 first2  second:3
-[2,3]=16 
-
-PIERWSZY:::::3:2
-PIERWSZY:::::3:4
-DRUGI::::3:4Ruch niedozwolony z pola 22 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,3] = 16
-1 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:2
-[2,2]=15 
-1 first2  second:4
-[2,4]=17 
-1 first3  second:2
-[3,2]=24 
-
-PIERWSZY:::::3:1
-PIERWSZY:::::3:3
-DRUGI::::3:3
-PIERWSZY:::::2:3
-DRUGI::::2:3Ruch niedozwolony z pola 16 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,2] = 15
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:1
-[2,1]=14 
-1 first2  second:3
-[2,3]=23 
-1 first1  second:2
-[1,2]=8 
-
-PIERWSZY:::::2:2
-PIERWSZY:::::2:4
-PIERWSZY:::::3:2
-DRUGI::::3:2Ruch niedozwolony z pola 15 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,2] = 8
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:1
-[1,1]=7 
-1 first1  second:3
-[1,3]=9 
-1 first2  second:2
-[2,2]=24 
-
-PIERWSZY:::::2:1
-PIERWSZY:::::2:3
-DRUGI::::2:3
-PIERWSZY:::::1:2
-DRUGI::::1:2Ruch niedozwolony z pola 8 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,3] = 9
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=23 
-1 first1  second:4
-[1,4]=10 
-1 first0  second:2
-[0,2]=3 
-
-PIERWSZY:::::1:1
-PIERWSZY:::::1:3
-PIERWSZY:::::2:2
-DRUGI::::2:2Ruch niedozwolony z pola 9 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,2] = 3
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:1
-[0,1]=2 
-1 first0  second:3
-[0,3]=4 
-1 first1  second:3
-[1,3]=24 
-
-PIERWSZY:::::1:2
-DRUGI::::1:2
-PIERWSZY:::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:2Ruch niedozwolony z pola 3 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,1] = 2
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:0
-[0,0]=1 
-1 first0  second:2
-[0,2]=23 
-
-PIERWSZY:::::0:1
-PIERWSZY:::::0:3
-PIERWSZY:::::1:3
-DRUGI::::1:3Ruch niedozwolony z pola 2 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,3] = 2
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=3 
-1 first1  second:4
-[1,4]=10 
-1 first0  second:2
-[0,2]=23 
-
-PIERWSZY:::::0:1
-DRUGI::::0:1
-PIERWSZY:::::0:3
-PIERWSZY:::::1:3
-DRUGI::::1:3Ruch niedozwolony z pola 2 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=10 
-Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=24 
-1 first1  second:5
-[1,5]=11 
-1 first2  second:4
-[2,4]=17 
-
-PIERWSZY:::::1:2
-PIERWSZY:::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:2Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,2] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:1
-[0,1]=2 
-1 first0  second:3
-[0,3]=4 
-1 first1  second:3
-[1,3]=24 
-
-PIERWSZY:::::1:2
-PIERWSZY:::::1:4
-DRUGI::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:2Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=24 
-1 first1  second:5
-[1,5]=11 
-1 first2  second:4
-[2,4]=17 
-
-PIERWSZY:::::1:2
-PIERWSZY:::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:2Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=23 
-
-PIERWSZY:::::1:3
-DRUGI::::1:3
-PIERWSZY:::::1:5
-PIERWSZY:::::2:4
-DRUGI::::2:4Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,3] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=3 
-1 first1  second:4
-[1,4]=23 
-1 first0  second:2
-[0,2]=10 
-
-PIERWSZY:::::1:3
-PIERWSZY:::::1:5
-PIERWSZY:::::2:4
-DRUGI::::2:4Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,2] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:1
-[0,1]=2 
-1 first0  second:3
-[0,3]=4 
-1 first1  second:3
-[1,3]=24 
-
-PIERWSZY:::::1:2
-PIERWSZY:::::1:4
-DRUGI::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:2Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=10 
-Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=10 
-Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,3] = 8
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:2
-[2,2]=9 
-1 first2  second:4
-[2,4]=17 
-1 first3  second:2
-[3,2]=15 
-Ruch niedozwolony z pola 8 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,2] = 9
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:1
-[2,1]=14 
-1 first2  second:3
-[2,3]=8 
-1 first1  second:2
-[1,2]=3 
-Ruch niedozwolony z pola 9 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,1] = 7
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:0
-[1,0]=6 
-1 first1  second:2
-[1,2]=3 
-1 first0  second:0
-[0,0]=1 
-Ruch niedozwolony z pola 7 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [3,4] = 22
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first3  second:3
-[3,3]=16 
-1 first2  second:5
-[2,5]=18 
-Ruch niedozwolony z pola 22 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,3] = 4
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:2
-[0,2]=23 
-1 first0  second:4
-[0,4]=5 
-
-PIERWSZY:::::0:1
-PIERWSZY:::::0:3
-PIERWSZY:::::1:3
-DRUGI::::1:3Ruch niedozwolony z pola 4 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [0,4] = 5
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:3
-[0,3]=24 
-1 first1  second:5
-[1,5]=11 
-
-PIERWSZY:::::0:2
-DRUGI::::0:2
-PIERWSZY:::::0:4
-DRUGI::::0:4Ruch niedozwolony z pola 5 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,5] = 11
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:4
-[1,4]=10 
-1 first1  second:6
-[1,6]=12 
-1 first0  second:4
-[0,4]=23 
-
-PIERWSZY:::::0:3
-DRUGI::::0:3
-PIERWSZY:::::1:5
-DRUGI::::1:5Ruch niedozwolony z pola 11 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=4 
-1 first1  second:5
-[1,5]=24 
-1 first2  second:4
-[2,4]=17 
-
-PIERWSZY:::::1:4
-PIERWSZY:::::1:6
-PIERWSZY:::::0:4
-DRUGI::::0:4Ruch niedozwolony z pola 10 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=23 
-
-PIERWSZY:::::1:3
-PIERWSZY:::::1:5
-DRUGI::::1:5
-PIERWSZY:::::2:4
-DRUGI::::2:4Ruch niedozwolony z pola 17 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,5] = 18
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:4
-[2,4]=24 
-1 first2  second:6
-[2,6]=19 
-1 first3  second:4
-[3,4]=22 
-
-PIERWSZY:::::2:3
-PIERWSZY:::::2:5
-PIERWSZY:::::1:4
-DRUGI::::1:4Ruch niedozwolony z pola 18 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [3,4] = 22
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first3  second:3
-[3,3]=16 
-1 first2  second:5
-[2,5]=23 
-
-PIERWSZY:::::2:4
-DRUGI::::2:4
-PIERWSZY:::::2:6
-PIERWSZY:::::3:4
-DRUGI::::3:4Ruch niedozwolony z pola 22 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [2,6] = 19
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first2  second:5
-[2,5]=23 
-1 first1  second:6
-[1,6]=12 
-
-PIERWSZY:::::2:4
-PIERWSZY:::::2:6
-PIERWSZY:::::3:4
-DRUGI::::3:4Ruch niedozwolony z pola 19 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [1,6] = 12
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 19
-    Sąsiedzi klikniętego pola: 
-1 first1  second:5
-[1,5]=17 
-1 first2  second:6
-[2,6]=24 
-
-PIERWSZY:::::2:5
-DRUGI::::2:5
-PIERWSZY:::::1:6
-DRUGI::::1:6Ruch niedozwolony z pola 12 (żaden układ nie spełnia warunków)
-
-5
- RUCH Z [3,2] = 22
-0 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first3  second:1
-[3,1]=21 
-1 first3  second:3
-[3,3]=23 
-1 first2  second:3
-[2,3]=16 
-
-PIERWSZY:::::3:2
-PIERWSZY:::::3:4
-DRUGI::::3:45
- RUCH Z [2,3] = 16
-1 
-    Puste 1: [3,3] = 23
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:2
-[2,2]=15 
-1 first2  second:4
-[2,4]=17 
-1 first3  second:2
-[3,2]=24 
-
-PIERWSZY:::::3:1
-PIERWSZY:::::3:3
-DRUGI::::3:3
-PIERWSZY:::::2:3
-DRUGI::::2:35
- RUCH Z [2,2] = 15
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:1
-[2,1]=14 
-1 first2  second:3
-[2,3]=23 
-1 first1  second:2
-[1,2]=8 
-
-PIERWSZY:::::2:2
-PIERWSZY:::::2:4
-PIERWSZY:::::3:2
-DRUGI::::3:25
- RUCH Z [1,2] = 8
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:1
-[1,1]=7 
-1 first1  second:3
-[1,3]=9 
-1 first2  second:2
-[2,2]=24 
-
-PIERWSZY:::::2:1
-PIERWSZY:::::2:3
-DRUGI::::2:3
-PIERWSZY:::::1:2
-DRUGI::::1:25
- RUCH Z [1,3] = 9
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:2
-[1,2]=23 
-1 first1  second:4
-[1,4]=10 
-1 first0  second:2
-[0,2]=3 
-
-PIERWSZY:::::1:1
-PIERWSZY:::::1:3
-PIERWSZY:::::2:2
-DRUGI::::2:25
- RUCH Z [0,2] = 3
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:1
-[0,1]=2 
-1 first0  second:3
-[0,3]=4 
-1 first1  second:3
-[1,3]=24 
-
-PIERWSZY:::::1:2
-DRUGI::::1:2
-PIERWSZY:::::1:4
-PIERWSZY:::::0:2
-DRUGI::::0:25
- RUCH Z [0,3] = 4
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:2
-[0,2]=23 
-1 first0  second:4
-[0,4]=5 
-
-PIERWSZY:::::0:1
-PIERWSZY:::::0:3
-PIERWSZY:::::1:3
-DRUGI::::1:35
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=4 
-1 first1  second:5
-[1,5]=11 
-1 first2  second:4
-[2,4]=17 
-5
- RUCH Z [2,4] = 17
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
-1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=10 
-5
- RUCH Z [0,4] = 5
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first0  second:3
-[0,3]=24 
-1 first1  second:5
-[1,5]=11 
+[1,5]=20 
 
 PIERWSZY:::::0:2
 DRUGI::::0:2
 PIERWSZY:::::0:4
 DRUGI::::0:45
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
-    Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=4 
-1 first1  second:5
-[1,5]=11 
-1 first2  second:4
-[2,4]=17 
-5
- RUCH Z [1,5] = 11
+ RUCH Z [1,5] = 20
 0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
+    Puste 1: [0,3] = 24
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
 1 first1  second:4
-[1,4]=10 
+[1,4]=18 
 1 first1  second:6
-[1,6]=12 
+[1,6]=16 
 1 first0  second:4
 [0,4]=23 
 
@@ -918,93 +33,66 @@ PIERWSZY:::::0:3
 DRUGI::::0:3
 PIERWSZY:::::1:5
 DRUGI::::1:55
- RUCH Z [1,4] = 10
-1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
+ RUCH Z [2,6] = 22
+0 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
-1 first1  second:3
-[1,3]=4 
+1 first2  second:5
+[2,5]=5 
+1 first1  second:6
+[1,6]=16 
+5
+ RUCH Z [1,6] = 16
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
+    Sąsiedzi klikniętego pola: 
 1 first1  second:5
 [1,5]=24 
-1 first2  second:4
-[2,4]=17 
+1 first2  second:6
+[2,6]=22 
 
 PIERWSZY:::::1:4
 PIERWSZY:::::1:6
 PIERWSZY:::::0:4
 DRUGI::::0:45
-Kliknięto na puste pole [1,5]
-5
- RUCH Z [2,4] = 17
+ RUCH Z [2,6] = 22
 0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
-1 first2  second:3
-[2,3]=8 
 1 first2  second:5
-[2,5]=18 
-1 first1  second:4
-[1,4]=23 
+[2,5]=5 
+1 first1  second:6
+[1,6]=23 
 
-PIERWSZY:::::1:3
 PIERWSZY:::::1:5
 DRUGI::::1:5
-PIERWSZY:::::2:4
-DRUGI::::2:45
- RUCH Z [2,5] = 18
+PIERWSZY:::::2:6
+DRUGI::::2:65
+ RUCH Z [2,5] = 5
 1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
 1 first2  second:4
-[2,4]=24 
+[2,4]=4 
 1 first2  second:6
-[2,6]=19 
+[2,6]=24 
 1 first3  second:4
-[3,4]=22 
+[3,4]=11 
 
-PIERWSZY:::::2:3
 PIERWSZY:::::2:5
-PIERWSZY:::::1:4
-DRUGI::::1:45
- RUCH Z [3,4] = 22
+PIERWSZY:::::1:6
+DRUGI::::1:65
+ RUCH Z [3,4] = 11
 0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 22
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
 1 first3  second:3
-[3,3]=16 
-1 first2  second:5
-[2,5]=23 
-
-PIERWSZY:::::2:4
-DRUGI::::2:4
-PIERWSZY:::::2:6
-PIERWSZY:::::3:4
-DRUGI::::3:45
- RUCH Z [2,6] = 19
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 24
-    Sąsiedzi klikniętego pola: 
-1 first2  second:5
-[2,5]=23 
-1 first1  second:6
-[1,6]=12 
-
-PIERWSZY:::::2:4
-PIERWSZY:::::2:6
-PIERWSZY:::::3:4
-DRUGI::::3:45
- RUCH Z [3,4] = 19
-0 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 19
-    Sąsiedzi klikniętego pola: 
-1 first3  second:3
-[3,3]=16 
+[3,3]=12 
 1 first2  second:5
 [2,5]=23 
 
@@ -1013,13 +101,167 @@ PIERWSZY:::::2:6
 DRUGI::::2:6
 PIERWSZY:::::3:4
 DRUGI::::3:45
- RUCH Z [3,3] = 16
+ RUCH Z [3,3] = 12
 1 
-    Puste 1: [3,3] = 16
-    Puste 2: [3,4] = 24
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 12
     Sąsiedzi klikniętego pola: 
 1 first3  second:2
-[3,2]=15 
+[3,2]=19 
+1 first3  second:4
+[3,4]=24 
+
+PIERWSZY:::::3:3
+PIERWSZY:::::2:5
+DRUGI::::2:55
+ RUCH Z [2,4] = 4
+0 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 23
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=8 
+1 first2  second:5
+[2,5]=12 
+1 first1  second:4
+[1,4]=18 
+5
+ RUCH Z [3,2] = 19
+0 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 23
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=14 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=8 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [2,3] = 8
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 23
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=4 
+1 first3  second:2
+[3,2]=24 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:35
+ RUCH Z [2,4] = 4
+0 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=23 
+1 first2  second:5
+[2,5]=12 
+1 first1  second:4
+[1,4]=18 
+
+PIERWSZY:::::2:2
+PIERWSZY:::::2:4
+PIERWSZY:::::3:2
+DRUGI::::3:25
+ RUCH Z [1,4] = 18
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first1  second:3
+[1,3]=17 
+1 first1  second:5
+[1,5]=22 
+1 first2  second:4
+[2,4]=24 
+
+PIERWSZY:::::2:3
+DRUGI::::2:3
+PIERWSZY:::::2:5
+PIERWSZY:::::1:4
+DRUGI::::1:45
+ RUCH Z [2,5] = 12
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first2  second:4
+[2,4]=24 
+1 first2  second:6
+[2,6]=11 
+1 first3  second:4
+[3,4]=19 
+
+PIERWSZY:::::2:3
+PIERWSZY:::::2:5
+PIERWSZY:::::1:4
+DRUGI::::1:45
+ RUCH Z [1,4] = 12
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first1  second:3
+[1,3]=17 
+1 first1  second:5
+[1,5]=22 
+1 first2  second:4
+[2,4]=24 
+
+PIERWSZY:::::2:3
+PIERWSZY:::::2:5
+DRUGI::::2:5
+PIERWSZY:::::1:4
+DRUGI::::1:45
+ RUCH Z [2,5] = 12
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first2  second:4
+[2,4]=24 
+1 first2  second:6
+[2,6]=11 
+1 first3  second:4
+[3,4]=19 
+
+PIERWSZY:::::2:3
+PIERWSZY:::::2:5
+PIERWSZY:::::1:4
+DRUGI::::1:45
+ RUCH Z [3,4] = 19
+0 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=8 
+1 first2  second:5
+[2,5]=23 
+
+PIERWSZY:::::2:4
+DRUGI::::2:4
+PIERWSZY:::::2:6
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,3] = 8
+1 
+    Puste 1: [0,3] = 20
+    Puste 2: [3,3] = 8
+    Sąsiedzi klikniętego pola: 
+1 first3  second:2
+[3,2]=4 
 1 first3  second:4
 [3,4]=24 
 
