@@ -16,11 +16,12 @@ private:
     GameStateManager<vector<vector<int>>> stateManager;
     int mx, my;
     chrono::time_point<chrono::steady_clock> startTime;
+
 public:
     PuzzleBoard(int size);
     void move(int index) override;
-    bool isSolved() const override;
-    int getSize() { return board.size(); }
+    bool isSolved() override;
+    int getSize() const override{ return board.size(); }
     vector<vector<int>> getBoard() const override { return board; }
     void changeBoard();
 

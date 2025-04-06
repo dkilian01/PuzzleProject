@@ -38,7 +38,7 @@ void PuzzleBoard::changeBoard()
 }
 void PuzzleBoard::move(int index) {
 
-	
+	if (solved) return;
 	int size = board.size();
 	int x = index / size;
 	int y = index % size;
@@ -60,7 +60,7 @@ void PuzzleBoard::move(int index) {
 		swap(board[x][y + 1], board[x][y]);
 	}
 }
-bool PuzzleBoard::isSolved()const {
+bool PuzzleBoard::isSolved() {
 	int v=1;
 	for (const auto r : board) {
 		for (const auto c : r) {
@@ -68,7 +68,8 @@ bool PuzzleBoard::isSolved()const {
 			
 		}
 	}
-	return true;
+	solved = true;
+	return solved;
 }
 void PuzzleBoard::startTimer() {
 	startTime = chrono::steady_clock::now();
@@ -100,11 +101,19 @@ void PuzzleBoard::redoMove() {
 }
 
 void PuzzleBoard::saveState(const string& filename) {
-	stateManager.saveToFile(filename, board);
+	stateManager.saveToFile(filename, board,getTime());
 }
 
 bool PuzzleBoard::loadState(const string& filename) {
-	return stateManager.loadFromFile(filename, board);
+	double time;
+	if (stateManager.loadFromFile(filename, board, time))
+	{
+		using clock = std::chrono::steady_clock;
+		startTime = clock::now() - std::chrono::duration_cast<clock::duration>(std::chrono::duration<double>(time));
+		return true;
+
+	}
+	return false;
 }
 int PuzzleBoard::getX()
 {

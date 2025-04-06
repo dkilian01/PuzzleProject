@@ -54,6 +54,7 @@ private:
     bool darkMode = false;
 
     void createControlButtons(QVBoxLayout* layout);
+    void deactivateButtons();
 
 private slots:
     void onTileClicked();

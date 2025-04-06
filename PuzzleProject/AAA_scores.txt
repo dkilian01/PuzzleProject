@@ -2,3 +2,11 @@
 1.76737 4 hex
 3.60609 4 hex
 1.10165 4 classic
+31.3619 4 hex
+2.00723 4 classic
+3.61588 4 classic
+5.55984 4 classic
+3.32632 4 hex
+4.64432 4 hex
+4.96582 4 classic
+2.42005 5 hex

@@ -5,3 +5,5 @@
 1.16008 4 hex
 0.997865 4 classic
 1.09692 4 classic
+4.39583 4 classic
+3.35549 4 hex

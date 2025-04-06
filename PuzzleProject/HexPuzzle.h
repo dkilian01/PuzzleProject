@@ -24,7 +24,7 @@ private:
 public:
     HexPuzzle(int size);
     void move(int index) override;
-    bool isSolved() const override;
+    bool isSolved() override;
     std::vector<std::vector<int>> getBoard() const override { return board; }
 
     void changeBoard();
@@ -41,6 +41,8 @@ public:
     int getX() override { return empty1.first; }
     int getY() override { return empty1.second; }
     int getTileAmount();
+
+    int getSize() const override;
 
     vector<pair<int, int>> getTriangleNeighbors(int x, int y) const;
 };

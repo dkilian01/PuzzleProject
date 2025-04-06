@@ -7,7 +7,7 @@
 class PuzzleBase {
 public:
     virtual void move(int index) = 0;
-    virtual bool isSolved() const = 0;
+    virtual bool isSolved() = 0;
     virtual std::vector<std::vector<int>> getBoard() const = 0;
 
     virtual void startTimer() {}
@@ -23,5 +23,9 @@ public:
     virtual int getX() = 0;
     virtual int getY() = 0;
     virtual ~PuzzleBase() {}
+    virtual int getSize() const = 0;
+protected:
+    bool solved = false;
+    
     
 };

@@ -150,8 +150,8 @@ void PuzzleProject::onTileClicked() {
         timeLabel->setText("Gratulacje! Czas:" + QString::number(t));
         QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(t));
 
-        player.setScore(t, board->getBoard().size(), (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic"));
-
+        player.setScore(t, board->getSize(), (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic"));
+        deactivateButtons();
     }
 }
 
@@ -279,4 +279,14 @@ void PuzzleProject::createBoardLayout() {
     }
 
     this->update();
+}
+void PuzzleProject::deactivateButtons() {
+    for (QPushButton* btn : buttons)
+        btn->setEnabled(false); // pola planszy
+
+    undoButton->setEnabled(false);
+    redoButton->setEnabled(false);
+    saveButton->setEnabled(false);
+    loadButton->setEnabled(false);
+
 }

@@ -33,6 +33,7 @@ HexPuzzle::HexPuzzle(int size) : size(size) {
 }
 void HexPuzzle::move(int index) {
     index++;
+    if (solved)return;
     QFile file("debug_log.txt");
     file.open(QIODevice::Append | QIODevice::Text);
     QTextStream out(&file);
@@ -85,12 +86,13 @@ void HexPuzzle::move(int index) {
     }
 
 }
-bool HexPuzzle::isSolved() const {
+bool HexPuzzle::isSolved()  {
     int val = 1;
     for (const auto& row : board)
         for (int v : row)
             if (v != 0 && v != val++) return false;
-    return true;
+    solved = true;
+    return solved;
 }
 
 void HexPuzzle::changeBoard() {
@@ -188,11 +190,19 @@ void HexPuzzle::redoMove() {
 }
 
 void HexPuzzle::saveState(const string& filename) {
-    stateManager.saveToFile(filename, board);
+    stateManager.saveToFile(filename, board,getTime());
 }
 
 bool HexPuzzle::loadState(const string& filename) {
-    return stateManager.loadFromFile(filename, board);
+    double time;
+    if (stateManager.loadFromFile(filename, board, time))
+    {
+        using clock = std::chrono::steady_clock;
+        startTime = clock::now() - std::chrono::duration_cast<clock::duration>(std::chrono::duration<double>(time));
+        return true;
+
+    }
+    return false;
 }
 bool HexPuzzle::isUpTriangle(int i, int j) const {
     if (i <= (4 / 2) - 1)
@@ -263,4 +273,8 @@ std::vector<std::pair<int, int>> HexPuzzle::getTriangleNeighbors(int x, int y) c
     }
 
     return neighbors;
+}
+int HexPuzzle::getSize() const 
+{
+    return size;
 }

@@ -34,8 +34,9 @@ public:
         return nextState;
     }
 
-    void saveToFile(const std::string& filename, const T& state) {
+    void saveToFile(const std::string& filename, const T& state,double time) {
         std::ofstream out(filename);
+        out << time << "\n";
         for (const auto& row : state) {
             for (int v : row) out << v << " ";
             out << "\n";
@@ -43,9 +44,10 @@ public:
         out.close();
     }
 
-    bool loadFromFile(const std::string& filename, T& state) {
+    bool loadFromFile(const std::string& filename, T& state,double& time) {
         std::ifstream in(filename);
         if (!in) return false;
+        in >> time;
         for (auto& row : state)
             for (int& v : row) in >> v;
         in.close();
