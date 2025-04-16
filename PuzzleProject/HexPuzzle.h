@@ -25,9 +25,9 @@ public:
     HexPuzzle(int size);
     void move(int index) override;
     bool isSolved() override;
-    std::vector<std::vector<int>> getBoard() const override { return board; }
+    vector<vector<int>> getBoard() const override { return board; }
 
-    void changeBoard();
+    void changeBoard() override;
     void startTimer() override;
     double getTime() override;
 
@@ -38,8 +38,6 @@ public:
 
     void saveState(const std::string& filename) override;
     bool loadState(const std::string& filename) override;
-    int getX() override { return empty1.first; }
-    int getY() override { return empty1.second; }
     int getTileAmount();
 
     int getSize() const override;

@@ -34,13 +34,8 @@ HexPuzzle::HexPuzzle(int size) : size(size) {
 void HexPuzzle::move(int index) {
     index++;
     if (solved)return;
-    QFile file("debug_log.txt");
-    file.open(QIODevice::Append | QIODevice::Text);
-    QTextStream out(&file);
-    out << board[3].size() << "\n";
     auto from = indexToCoord(index);
     if (!isValid(from.first, from.second)) {
-        out << "Niepoprawna pozycja indeksu: " << index << "\n";
         return;
     }
 
@@ -49,24 +44,10 @@ void HexPuzzle::move(int index) {
     int emptyVal2 = tileAmount - 1;
 
     if (val == emptyVal1 || val == emptyVal2) {
-        out << "Kliknięto na puste pole [" << from.first << "," << from.second << "]\n";
         return;
     }
 
-    // Log: podstawowe dane
-    out << " RUCH Z [" << from.first << "," << from.second << "] = " << val << "\n" << isUpTriangle(from.first, from.second) << " " << "\n";
-    out << "    Puste 1: [" << empty1.first << "," << empty1.second << "] = " << board[empty1.first][empty1.second] << "\n";
-    out << "    Puste 2: [" << empty2.first << "," << empty2.second << "] = " << board[empty2.first][empty2.second] << "\n";
 
-    // Log: sąsiedzi klikniętego pola
-    out << "    Sąsiedzi klikniętego pola: ";
-    for (const auto& neighbor : getTriangleNeighbors(from.first, from.second)) {
-        out <<"\n"<< isValid(neighbor.first, neighbor.second) << " first" << neighbor.first << "  second:" << neighbor.second << "\n";
-        if (isValid(neighbor.first, neighbor.second)) {
-            out << "[" << neighbor.first << "," << neighbor.second << "]=" << board[neighbor.first][neighbor.second] << " ";
-        }
-    }
-    out << "\n";
 
     pair<int, int> empties[2] = { empty1, empty2 };
 
@@ -75,10 +56,8 @@ void HexPuzzle::move(int index) {
         {
             for (const auto& neighbor2 : getTriangleNeighbors(neighbor.first, neighbor.second))
             {
-                out << "\nPIERWSZY:::::" << neighbor2.first << ":" << neighbor2.second;
                 if (board[neighbor2.first][neighbor2.second] == tileAmount-2 || board[neighbor2.first][neighbor2.second] == tileAmount - 1)
                 {
-                    out << "\nDRUGI::::" << neighbor2.first << ":" << neighbor2.second;
                     swap(board[from.first][from.second], board[neighbor2.first][neighbor2.second]);
                 }
             }
@@ -96,9 +75,6 @@ bool HexPuzzle::isSolved()  {
 }
 
 void HexPuzzle::changeBoard() {
-    QFile file("debug_log.txt");
-    file.open(QIODevice::Append | QIODevice::Text);
-    QTextStream out(&file);
     vector<int> tiles1, tiles2;
 
     int rows = 0, s = size;
@@ -126,15 +102,6 @@ void HexPuzzle::changeBoard() {
             }
         }
         rows++;
-    }
-    for (const auto& cell : tiles1)
-    {
-        out << "  " << cell;
-    }
-    out << "\n";
-    for (const auto& cell : tiles2)
-    {
-        out << "  " << cell;
     }
     shuffle(tiles1.begin(), tiles1.end(), default_random_engine(random_device{}()));
     shuffle(tiles2.begin(), tiles2.end(), default_random_engine(random_device{}()));
@@ -205,7 +172,7 @@ bool HexPuzzle::loadState(const string& filename) {
     return false;
 }
 bool HexPuzzle::isUpTriangle(int i, int j) const {
-    if (i <= (4 / 2) - 1)
+    if (i <= (size / 2) - 1)
     {
         return(j % 2 == 0);
     }

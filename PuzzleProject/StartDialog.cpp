@@ -33,7 +33,7 @@ StartDialog::StartDialog(QWidget* parent)
 
     sizeSelector = new QSpinBox(this);
     sizeSelector->setRange(2, 10); // Zakres dozwolonych rozmiarów planszy
-    sizeSelector->setValue(4);     // Domyœlna wartoœæ
+    sizeSelector->setValue(5);     // Domyœlna wartoœæ
 
     QLabel* typeLabel = new QLabel("Typ planszy:", this);
     layout->addWidget(typeLabel);
@@ -81,7 +81,7 @@ void StartDialog::updateSizeRange(const QString& type) {
             sizeSelector->setValue(3); // ustawienie na najni¿sz¹ wartoœæ nieparzyst¹
     }
     else {
-        sizeSelector->setMinimum(3);
+        sizeSelector->setMinimum(4);
         sizeSelector->setMaximum(10);
         sizeSelector->setSingleStep(1);
     }
@@ -91,7 +91,7 @@ void StartDialog::validateAndAccept() {
     int val = sizeSelector->value();
 
     if (type == "Heksagonalna") {
-        if (val < 3 || val > 9 || val % 2 == 0) {
+        if (val < 5 || val > 9 || val % 2 == 0) {
             QMessageBox::warning(this, "B³¹d", "Dla planszy heksagonalnej dozwolone s¹ tylko nieparzyste rozmiary od 3 do 9.");
             return;
         }

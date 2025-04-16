@@ -2,14 +2,11 @@
 #include<algorithm>
 using namespace std;
 PuzzleBoard::PuzzleBoard(int size) {
-	board.resize(size, vector<int>(size));
+	board.resize(size, vector<int>(size));// Tworzy kwadratow¹ planszê o rozmiarze size x size
 	int v = 1;
 	for (int i = 0; i < size; i++)
 		for (int j = 0; j < size; j++)
-			board[i][j] = v++;
-	//board[size - 1][size - 1] = 0; //moze zmienic zeby sprawdzac wartosc maksymalna wtedy przy rozwiazaniu nie trzeba by sprawdzac ostatniego pola
-	mx = size - 1;
-	my = size - 1;
+			board[i][j] = v++;// Wype³nia planszê wartoœciami od 1 do n*n
 }
 void PuzzleBoard::changeBoard()
 {
@@ -17,20 +14,15 @@ void PuzzleBoard::changeBoard()
 
 	for (auto r : board)
 		for (int v : r)
-			tiles.push_back(v);
+			tiles.push_back(v); // Przepisuje wszystkie wartoœci do jednowymiarowego wektora
 
 	random_device rd;
 	mt19937 g(rd());
-	shuffle(tiles.begin(), tiles.end(), g);
+	shuffle(tiles.begin(), tiles.end(), g);//miesza pozycje w vektorze od begin do end
 	int index = 0;
 	for (int i = 0; i < board.size();i++) {
 		for (int j = 0; j < board.size();j++) {
 			board[i][j] = tiles[index];
-			if (tiles[index] == board.size() * board.size())
-			{
-				mx = i;
-				my = j;
-			}
 			index++;
 		}
 	}
@@ -114,12 +106,4 @@ bool PuzzleBoard::loadState(const string& filename) {
 
 	}
 	return false;
-}
-int PuzzleBoard::getX()
-{
-	return mx;
-}
-int PuzzleBoard::getY()
-{
-	return my;
 }

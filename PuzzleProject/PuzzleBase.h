@@ -10,18 +10,17 @@ public:
     virtual bool isSolved() = 0;
     virtual std::vector<std::vector<int>> getBoard() const = 0;
 
-    virtual void startTimer() {}
+    virtual void startTimer() = 0;
     virtual double getTime()  { return 0.0; }
 
-    virtual void undoMove() {}
-    virtual void redoMove() {}
+    virtual void undoMove() = 0;
+    virtual void redoMove() = 0;
     virtual bool canUndo() const { return false; }
     virtual bool canRedo() const { return false; }
+    virtual void changeBoard() = 0;
 
     virtual void saveState(const std::string&) {}
     virtual bool loadState(const std::string&) { return false; }
-    virtual int getX() = 0;
-    virtual int getY() = 0;
     virtual ~PuzzleBase() {}
     virtual int getSize() const = 0;
 protected:

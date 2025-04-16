@@ -135,10 +135,8 @@ void PuzzleProject::onTileClicked() {
     if (!clickedButton) return;
     int index = buttons.indexOf(clickedButton);
 
-
     const auto& grid = board->getBoard();
     board->move(index);
-    testLabel->setText("X:" + QString::number(board->getX()) + " Y:" + QString::number(board->getY()) + " button" + QString::number(index));
     
    
     updateBoard();

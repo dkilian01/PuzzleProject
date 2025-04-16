@@ -681,4 +681,1261 @@ DRUGI::::3:45
 
 PIERWSZY:::::3:3
 PIERWSZY:::::2:5
+DRUGI::::2:55
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+5
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [2,5] = 18
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first2  second:4
+[2,4]=17 
+1 first2  second:6
+[2,6]=19 
+1 first3  second:4
+[3,4]=24 
+
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:5
+DRUGI::::2:55
+ RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 18
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=23 
+1 first1  second:4
+[1,4]=10 
+
+PIERWSZY:::::2:4
+PIERWSZY:::::2:6
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [1,4] = 10
+1 
+    Puste 1: [3,3] = 18
+    Puste 2: [3,4] = 17
+    Sąsiedzi klikniętego pola: 
+1 first1  second:3
+[1,3]=9 
+1 first1  second:5
+[1,5]=11 
+1 first2  second:4
+[2,4]=24 
+
+PIERWSZY:::::2:3
+PIERWSZY:::::2:5
 DRUGI::::2:5
+PIERWSZY:::::1:4
+DRUGI::::1:45
+ RUCH Z [0,3] = 4
+0 
+    Puste 1: [3,3] = 18
+    Puste 2: [3,4] = 17
+    Sąsiedzi klikniętego pola: 
+1 first0  second:2
+[0,2]=3 
+1 first0  second:4
+[0,4]=5 
+5
+ RUCH Z [1,3] = 9
+0 
+    Puste 1: [3,3] = 18
+    Puste 2: [3,4] = 17
+    Sąsiedzi klikniętego pola: 
+1 first1  second:2
+[1,2]=8 
+1 first1  second:4
+[1,4]=23 
+1 first0  second:2
+[0,2]=3 
+
+PIERWSZY:::::1:3
+PIERWSZY:::::1:5
+PIERWSZY:::::2:4
+DRUGI::::2:45
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+Kliknięto na puste pole [3,2]
+5
+ RUCH Z [2,3] = 16
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first3  second:2
+[3,2]=24 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:35
+ RUCH Z [3,3] = 16
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:2
+[3,2]=24 
+1 first3  second:4
+[3,4]=22 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:35
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [2,3] = 16
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first3  second:2
+[3,2]=24 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:35
+ RUCH Z [3,3] = 16
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:2
+[3,2]=24 
+1 first3  second:4
+[3,4]=22 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:35
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:45
+ RUCH Z [3,4] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:5
+[2,5]=18 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:4 RUCH Z [0,6] = 7
+1 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 54
+    Sąsiedzi klikniętego pola: 
+1 first0  second:5
+[0,5]=6 
+1 first1  second:7
+[1,7]=15 
+ RUCH Z [5,4] = 52
+1 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 54
+    Sąsiedzi klikniętego pola: 
+1 first5  second:3
+[5,3]=51 
+1 first5  second:5
+[5,5]=53 
+
+PIERWSZY:::::5:4
+PIERWSZY:::::5:6
+DRUGI::::5:6
+PIERWSZY:::::4:6 RUCH Z [5,3] = 51
+0 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:2
+[5,2]=50 
+1 first5  second:4
+[5,4]=54 
+1 first4  second:4
+[4,4]=43 
+
+PIERWSZY:::::5:3
+PIERWSZY:::::5:5
+DRUGI::::5:5 RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,4] = 43
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:3
+[4,3]=42 
+1 first4  second:5
+[4,5]=44 
+1 first5  second:3
+[5,3]=53 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+DRUGI::::5:4
+PIERWSZY:::::4:4
+DRUGI::::4:4 RUCH Z [5,4] = 43
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:3
+[5,3]=53 
+1 first5  second:5
+[5,5]=51 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+PIERWSZY:::::4:4
+DRUGI::::4:4 RUCH Z [4,4] = 43
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:3
+[4,3]=42 
+1 first4  second:5
+[4,5]=44 
+1 first5  second:3
+[5,3]=53 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+DRUGI::::5:4
+PIERWSZY:::::4:4
+DRUGI::::4:4 RUCH Z [5,4] = 43
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:3
+[5,3]=53 
+1 first5  second:5
+[5,5]=51 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+PIERWSZY:::::4:4
+DRUGI::::4:4 RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [4,5] = 44
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first3  second:6
+[3,6]=34 
+ RUCH Z [5,2] = 50
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:1
+[5,1]=49 
+1 first5  second:3
+[5,3]=53 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+DRUGI::::5:4
+PIERWSZY:::::4:4Kliknięto na puste pole [5,2]
+Kliknięto na puste pole [5,2]
+ RUCH Z [5,4] = 50
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:3
+[5,3]=53 
+1 first5  second:5
+[5,5]=51 
+
+PIERWSZY:::::5:2
+DRUGI::::5:2
+PIERWSZY:::::5:4
+DRUGI::::5:4
+PIERWSZY:::::4:4 RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [5,2] = 50
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:1
+[5,1]=49 
+1 first5  second:3
+[5,3]=53 
+
+PIERWSZY:::::5:2
+PIERWSZY:::::5:4
+DRUGI::::5:4
+PIERWSZY:::::4:4 RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [4,3] = 42
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=43 
+1 first3  second:4
+[3,4]=32 
+ RUCH Z [3,2] = 22
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:4
+PIERWSZY:::::2:4 RUCH Z [2,3] = 16
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first1  second:3
+[1,3]=9 
+ RUCH Z [2,3] = 16
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first1  second:3
+[1,3]=9 
+ RUCH Z [2,3] = 16
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first1  second:3
+[1,3]=9 
+ RUCH Z [2,3] = 16
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first1  second:3
+[1,3]=9 
+ RUCH Z [2,5] = 18
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:4
+[2,4]=17 
+1 first2  second:6
+[2,6]=19 
+1 first1  second:5
+[1,5]=11 
+ RUCH Z [2,5] = 18
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:4
+[2,4]=17 
+1 first2  second:6
+[2,6]=19 
+1 first1  second:5
+[1,5]=11 
+ RUCH Z [2,4] = 17
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first3  second:3
+[3,3]=23 
+
+PIERWSZY:::::3:2
+DRUGI::::3:2
+PIERWSZY:::::3:4
+PIERWSZY:::::2:4
+DRUGI::::2:4 RUCH Z [3,2] = 17
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+PIERWSZY:::::2:4
+DRUGI::::2:4 RUCH Z [3,2] = 22
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 24
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=23 
+1 first2  second:3
+[2,3]=16 
+
+PIERWSZY:::::3:2
+PIERWSZY:::::3:4
+DRUGI::::3:4 RUCH Z [2,3] = 16
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first3  second:2
+[3,2]=24 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:3 RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=23 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+
+PIERWSZY:::::2:2
+PIERWSZY:::::2:4
+PIERWSZY:::::3:2
+DRUGI::::3:2Kliknięto na puste pole [2,4]
+ RUCH Z [3,2] = 17
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:1
+[3,1]=21 
+1 first3  second:3
+[3,3]=16 
+1 first2  second:3
+[2,3]=23 
+
+PIERWSZY:::::2:2
+PIERWSZY:::::2:4
+DRUGI::::2:4
+PIERWSZY:::::3:2
+DRUGI::::3:2 RUCH Z [3,3] = 16
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first3  second:2
+[3,2]=24 
+1 first3  second:4
+[3,4]=22 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:3 RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+ RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+ RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+ RUCH Z [2,4] = 17
+0 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:3
+[2,3]=16 
+1 first2  second:5
+[2,5]=18 
+1 first1  second:4
+[1,4]=10 
+ RUCH Z [2,3] = 16
+1 
+    Puste 1: [3,3] = 23
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:2
+[2,2]=15 
+1 first2  second:4
+[2,4]=17 
+1 first3  second:2
+[3,2]=24 
+
+PIERWSZY:::::3:1
+PIERWSZY:::::3:3
+DRUGI::::3:3
+PIERWSZY:::::2:3
+DRUGI::::2:3 RUCH Z [2,2] = 15
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:1
+[2,1]=14 
+1 first2  second:3
+[2,3]=23 
+1 first1  second:2
+[1,2]=8 
+
+PIERWSZY:::::2:2
+PIERWSZY:::::2:4
+PIERWSZY:::::3:2
+DRUGI::::3:2Kliknięto na puste pole [2,2]
+ RUCH Z [1,2] = 8
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first1  second:1
+[1,1]=7 
+1 first1  second:3
+[1,3]=9 
+1 first2  second:2
+[2,2]=24 
+
+PIERWSZY:::::2:1
+PIERWSZY:::::2:3
+DRUGI::::2:3
+PIERWSZY:::::1:2
+DRUGI::::1:2 RUCH Z [1,3] = 9
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first1  second:2
+[1,2]=23 
+1 first1  second:4
+[1,4]=10 
+1 first0  second:2
+[0,2]=3 
+
+PIERWSZY:::::1:1
+PIERWSZY:::::1:3
+PIERWSZY:::::2:2
+DRUGI::::2:2 RUCH Z [1,1] = 7
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first1  second:0
+[1,0]=6 
+1 first1  second:2
+[1,2]=23 
+1 first0  second:0
+[0,0]=1 
+
+PIERWSZY:::::1:1
+PIERWSZY:::::1:3
+DRUGI::::1:3
+PIERWSZY:::::2:2 RUCH Z [1,3] = 7
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first1  second:2
+[1,2]=23 
+1 first1  second:4
+[1,4]=10 
+1 first0  second:2
+[0,2]=3 
+
+PIERWSZY:::::1:1
+DRUGI::::1:1
+PIERWSZY:::::1:3
+DRUGI::::1:3
+PIERWSZY:::::2:2 RUCH Z [2,2] = 9
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:1
+[2,1]=14 
+1 first2  second:3
+[2,3]=8 
+1 first1  second:2
+[1,2]=23 
+
+PIERWSZY:::::1:1
+PIERWSZY:::::1:3
+DRUGI::::1:3
+PIERWSZY:::::2:2
+DRUGI::::2:2 RUCH Z [0,1] = 2
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first0  second:0
+[0,0]=1 
+1 first0  second:2
+[0,2]=3 
+ RUCH Z [0,1] = 2
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first0  second:0
+[0,0]=1 
+1 first0  second:2
+[0,2]=3 
+ RUCH Z [0,1] = 2
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first0  second:0
+[0,0]=1 
+1 first0  second:2
+[0,2]=3 
+ RUCH Z [0,1] = 2
+0 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first0  second:0
+[0,0]=1 
+1 first0  second:2
+[0,2]=3 
+ RUCH Z [2,1] = 14
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first2  second:0
+[2,0]=13 
+1 first2  second:2
+[2,2]=24 
+1 first3  second:0
+[3,0]=20 
+
+PIERWSZY:::::2:1
+PIERWSZY:::::2:3
+PIERWSZY:::::1:2
+DRUGI::::1:2 RUCH Z [1,2] = 14
+1 
+    Puste 1: [3,3] = 16
+    Puste 2: [3,4] = 22
+    Sąsiedzi klikniętego pola: 
+1 first1  second:1
+[1,1]=7 
+1 first1  second:3
+[1,3]=9 
+1 first2  second:2
+[2,2]=24 
+
+PIERWSZY:::::2:1
+DRUGI::::2:1
+PIERWSZY:::::2:3
+PIERWSZY:::::1:2
+DRUGI::::1:2 RUCH Z [0,0] = 1
+1 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 54
+    Sąsiedzi klikniętego pola: 
+1 first0  second:1
+[0,1]=2 
+1 first1  second:1
+[1,1]=9 
+ RUCH Z [5,4] = 52
+0 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 54
+    Sąsiedzi klikniętego pola: 
+1 first5  second:3
+[5,3]=51 
+1 first5  second:5
+[5,5]=53 
+1 first4  second:5
+[4,5]=44 
+
+PIERWSZY:::::5:4
+PIERWSZY:::::5:6
+DRUGI::::5:6Kliknięto na puste pole [5,4]
+ RUCH Z [5,3] = 51
+1 
+    Puste 1: [5,5] = 53
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first5  second:2
+[5,2]=50 
+1 first5  second:4
+[5,4]=54 
+
+PIERWSZY:::::5:3
+PIERWSZY:::::5:5
+DRUGI::::5:5
+PIERWSZY:::::4:5 RUCH Z [4,5] = 44
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=43 
+1 first4  second:6
+[4,6]=45 
+1 first5  second:4
+[5,4]=54 
+
+PIERWSZY:::::5:3
+DRUGI::::5:3
+PIERWSZY:::::5:5
+PIERWSZY:::::4:5
+DRUGI::::4:5 RUCH Z [4,4] = 43
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:3
+[4,3]=42 
+1 first4  second:5
+[4,5]=53 
+1 first3  second:5
+[3,5]=33 
+
+PIERWSZY:::::4:4
+PIERWSZY:::::4:6
+PIERWSZY:::::5:4
+DRUGI::::5:4 RUCH Z [3,6] = 34
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:5
+[3,5]=33 
+1 first3  second:7
+[3,7]=35 
+1 first2  second:6
+[2,6]=23 
+ RUCH Z [3,6] = 34
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:5
+[3,5]=33 
+1 first3  second:7
+[3,7]=35 
+1 first2  second:6
+[2,6]=23 
+ RUCH Z [3,6] = 34
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:5
+[3,5]=33 
+1 first3  second:7
+[3,7]=35 
+1 first2  second:6
+[2,6]=23 
+ RUCH Z [3,6] = 34
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:5
+[3,5]=33 
+1 first3  second:7
+[3,7]=35 
+1 first2  second:6
+[2,6]=23 
+ RUCH Z [4,6] = 45
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:5
+[4,5]=53 
+1 first4  second:7
+[4,7]=46 
+1 first3  second:7
+[3,7]=35 
+
+PIERWSZY:::::4:4
+DRUGI::::4:4
+PIERWSZY:::::4:6
+DRUGI::::4:6
+PIERWSZY:::::5:4 RUCH Z [4,4] = 45
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:3
+[4,3]=42 
+1 first4  second:5
+[4,5]=53 
+1 first3  second:5
+[3,5]=33 
+
+PIERWSZY:::::4:4
+PIERWSZY:::::4:6
+DRUGI::::4:6
+PIERWSZY:::::5:4 RUCH Z [3,5] = 33
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:4
+[3,4]=32 
+1 first3  second:6
+[3,6]=34 
+1 first4  second:4
+[4,4]=54 
+
+PIERWSZY:::::4:3
+PIERWSZY:::::4:5
+DRUGI::::4:5
+PIERWSZY:::::3:5
+DRUGI::::3:5Kliknięto na puste pole [3,5]
+ RUCH Z [4,5] = 33
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=54 
+1 first4  second:6
+[4,6]=45 
+1 first5  second:4
+[5,4]=43 
+
+PIERWSZY:::::4:3
+PIERWSZY:::::4:5
+PIERWSZY:::::3:5
+DRUGI::::3:5 RUCH Z [4,3] = 42
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:2
+[4,2]=41 
+1 first4  second:4
+[4,4]=54 
+1 first5  second:2
+[5,2]=50 
+
+PIERWSZY:::::4:3
+PIERWSZY:::::4:5
+DRUGI::::4:5
+PIERWSZY:::::3:5 RUCH Z [4,5] = 42
+1 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first4  second:4
+[4,4]=54 
+1 first4  second:6
+[4,6]=45 
+1 first5  second:4
+[5,4]=43 
+
+PIERWSZY:::::4:3
+DRUGI::::4:3
+PIERWSZY:::::4:5
+DRUGI::::4:5
+PIERWSZY:::::3:5 RUCH Z [3,4] = 32
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=31 
+1 first3  second:5
+[3,5]=33 
+1 first2  second:4
+[2,4]=21 
+ RUCH Z [3,4] = 32
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=31 
+1 first3  second:5
+[3,5]=33 
+1 first2  second:4
+[2,4]=21 
+ RUCH Z [3,4] = 32
+0 
+    Puste 1: [5,5] = 51
+    Puste 2: [5,6] = 52
+    Sąsiedzi klikniętego pola: 
+1 first3  second:3
+[3,3]=31 
+1 first3  second:5
+[3,5]=33 
+1 first2  second:4
+[2,4]=21 

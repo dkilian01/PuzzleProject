@@ -14,7 +14,6 @@ private:
     //vector<vector<vector<int>>> history;
     //int currentStep = -1;
     GameStateManager<vector<vector<int>>> stateManager;
-    int mx, my;
     chrono::time_point<chrono::steady_clock> startTime;
 
 public:
@@ -23,7 +22,7 @@ public:
     bool isSolved() override;
     int getSize() const override{ return board.size(); }
     vector<vector<int>> getBoard() const override { return board; }
-    void changeBoard();
+    void changeBoard() override;
 
     void startTimer() override;
     double getTime()  override;
@@ -32,12 +31,9 @@ public:
     bool canRedo() const override;
     void undoMove() override;
     void redoMove() override;
-    //int getStep();
 
     void saveState(const string& filename) override;
     bool loadState(const string& filename) override;
-    int getX()override;
-    int getY()override;
     
 };
 
