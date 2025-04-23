@@ -5,42 +5,28 @@
 #include <QLabel>
 #include <QTimer>
 #include <QCloseEvent>
-#include<string>
 #include "ui_PuzzleProject.h"
-#include "PuzzleBoard.h"
-#include "Player.h"
+#include "GameLogic.h"
 
-/**
- * @brief Klasa GUI zarz¹dzaj¹ca interfejsem gry Puzzle.
- */
-class PuzzleProject : public QMainWindow
-{
+class PuzzleProject : public QMainWindow {
     Q_OBJECT
 
 public:
-    PuzzleProject(PuzzleBase* board, Player player, QWidget* parent = nullptr);
+    PuzzleProject(GameLogic* logic, QWidget* parent = nullptr);
     ~PuzzleProject();
+
 protected:
-    void closeEvent(QCloseEvent* event)override;
+    void closeEvent(QCloseEvent* event) override;
 
 private:
     Ui::PuzzleProjectClass ui;
-    PuzzleBase* board;
-    Player player;
+    GameLogic* logic;
 
     QGridLayout* gridLayout;
     QVector<QPushButton*> buttons;
-
     QLabel* timeLabel;
     QLabel* testLabel;
     QTimer* time;
-
-    int boardSize;
-
-    void updateBoard();
-    void updateBoardClassic();
-    void updateBoardHex();
-    void createBoardLayout();
 
     QPushButton* undoButton;
     QPushButton* redoButton;
@@ -51,8 +37,13 @@ private:
     QPushButton* rankingButton;
     QPushButton* backButton;
 
+
     bool darkMode = false;
 
+    void updateBoard();
+    void updateBoardClassic();
+    void updateBoardHex();
+    void createBoardLayout();
     void createControlButtons(QVBoxLayout* layout);
     void deactivateButtons();
 
@@ -66,6 +57,7 @@ private slots:
     void handleLoad();
     void handleThemeToggle();
     void handleBackToMenu();
+
 signals:
     void returnToMenu();
 };

@@ -78,10 +78,10 @@ void StartDialog::updateSizeRange(const QString& type) {
         sizeSelector->setMaximum(9);
         sizeSelector->setSingleStep(2);
         if (sizeSelector->value() % 2 == 0)
-            sizeSelector->setValue(3); // ustawienie na najni¿sz¹ wartoœæ nieparzyst¹
+            sizeSelector->setValue(5); // ustawienie na najni¿sz¹ wartoœæ nieparzyst¹
     }
     else {
-        sizeSelector->setMinimum(4);
+        sizeSelector->setMinimum(3);
         sizeSelector->setMaximum(10);
         sizeSelector->setSingleStep(1);
     }
@@ -92,7 +92,7 @@ void StartDialog::validateAndAccept() {
 
     if (type == "Heksagonalna") {
         if (val < 5 || val > 9 || val % 2 == 0) {
-            QMessageBox::warning(this, "B³¹d", "Dla planszy heksagonalnej dozwolone s¹ tylko nieparzyste rozmiary od 3 do 9.");
+            QMessageBox::warning(this, "Blad", "Dla planszy heksagonalnej dozwolone s¹ tylko nieparzyste rozmiary od 5 do 9.");
             return;
         }
     }

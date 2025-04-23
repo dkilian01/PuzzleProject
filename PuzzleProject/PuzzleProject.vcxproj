@@ -92,8 +92,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="HexPuzzle.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PuzzleSolver.cpp" />
     <ClCompile Include="RankDialog.cpp" />
     <ClCompile Include="StartDialog.cpp" />
     <ClCompile Include="StatisticsDialog.cpp" />
@@ -105,11 +107,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="HexPuzzle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PuzzleBase.h" />
     <ClInclude Include="PuzzleBoard.h" />
+    <ClInclude Include="PuzzleSolver.h" />
     <QtMoc Include="RankDialog.h" />
     <QtMoc Include="StatisticsDialog.h" />
     <QtMoc Include="StartDialog.h" />

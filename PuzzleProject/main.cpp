@@ -1,42 +1,54 @@
+
 #include "PuzzleProject.h"
 #include "Player.h"
 #include "StartDialog.h"
 #include "HexPuzzle.h"
+#include "PuzzleBoard.h"
+#include "GameLogic.h"
 #include <QtWidgets/QApplication>
-#include<iostream>
-int main(int argc, char* argv[])
-{
+#include <memory>
+using namespace std;
+int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
 
     while (true) {
         StartDialog dialog;
-        if (dialog.exec() != QDialog::Accepted)break;
+        if (dialog.exec() != QDialog::Accepted) break;
 
         int size = dialog.getBoardSize();
         QString playerName = dialog.getSelectedPlayer();
         Player player(playerName.toStdString());
         QString type = dialog.getBoardType();
-        PuzzleBase* board = nullptr;
 
+        unique_ptr<PuzzleBase> board;
         if (type == "Klasyczna") {
-            board = new PuzzleBoard(size);
-            //static_cast<PuzzleBoard*>(board)->changeBoard();
+            board = make_unique<PuzzleBoard>(size);
+            board->changeBoard();
         }
         else if (type == "Heksagonalna") {
-            board = new HexPuzzle(size);
-            //static_cast<HexPuzzle*>(board)->changeBoard();
+            board = make_unique<HexPuzzle>(size);
+            board->changeBoard();
         }
-        PuzzleProject* window = new PuzzleProject(board, player);
 
+        GameLogic* logic = new GameLogic(move(board), player);
+        logic->start();
+
+        PuzzleProject* window = new PuzzleProject(logic);
         bool powrotDoMenu = false;
+
         QObject::connect(window, &PuzzleProject::returnToMenu, [&]() {
+            logic->getPlayer().saveToFile();
             powrotDoMenu = true;
-            window->close();  // zamykamy okno gry
+            window->close();
             });
+
         window->show();
-        a.exec(); // Uruchamia GUI    
-        if (!powrotDoMenu)
-            break;  // u¿ytkownik zamkn¹³ okno bez chêci powrotu
+        a.exec();
+
+        delete window;
+        delete logic;
+
+        if (!powrotDoMenu) break;
     }
     return 0;
 }

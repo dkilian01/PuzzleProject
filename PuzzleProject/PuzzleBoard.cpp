@@ -1,4 +1,5 @@
 #include "PuzzleBoard.h"
+#include "PuzzleSolver.h"
 #include<algorithm>
 using namespace std;
 PuzzleBoard::PuzzleBoard(int size) {
@@ -12,20 +13,23 @@ void PuzzleBoard::changeBoard()
 {
 	vector<int> tiles;
 
-	for (auto r : board)
-		for (int v : r)
-			tiles.push_back(v); // Przepisuje wszystkie wartoœci do jednowymiarowego wektora
+		tiles.clear();
+		for (auto r : board)
+			for (int v : r)
+				tiles.push_back(v); // Przepisuje wszystkie wartoœci do jednowymiarowego wektora
 
-	random_device rd;
-	mt19937 g(rd());
-	shuffle(tiles.begin(), tiles.end(), g);//miesza pozycje w vektorze od begin do end
-	int index = 0;
-	for (int i = 0; i < board.size();i++) {
-		for (int j = 0; j < board.size();j++) {
-			board[i][j] = tiles[index];
-			index++;
+		random_device rd;
+		mt19937 g(rd());
+		shuffle(tiles.begin(), tiles.end(), g);//miesza pozycje w vektorze od begin do end
+		int index = 0;
+		for (int i = 0; i < board.size(); i++) {
+			for (int j = 0; j < board.size(); j++) {
+				board[i][j] = tiles[index];
+				index++;
+			}
 		}
-	}
+
+	stateManager.saveState(board);
 	startTimer();
 }
 void PuzzleBoard::move(int index) {

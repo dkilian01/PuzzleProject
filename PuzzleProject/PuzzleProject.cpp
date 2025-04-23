@@ -1,15 +1,13 @@
 #include "PuzzleProject.h"
-#include "Player.h"
 #include "StatisticsDialog.h"
-#include "HexPuzzle.h"
 #include "RankDialog.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
-using namespace std;
-PuzzleProject::PuzzleProject(PuzzleBase* board,Player player,QWidget* parent)
-    : QMainWindow(parent),board(board),player(player)
-{
-    board->startTimer();
+#include <QThread>
+#include <QApplication>
+
+PuzzleProject::PuzzleProject(GameLogic* logic, QWidget* parent)
+    : QMainWindow(parent), logic(logic) {
     ui.setupUi(this);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
@@ -21,49 +19,30 @@ PuzzleProject::PuzzleProject(PuzzleBase* board,Player player,QWidget* parent)
     timeLabel = new QLabel("Czas: 0.0s", this);
     mainLayout->addWidget(timeLabel);
 
-    testLabel = new QLabel("Czas: 0.0s", this);
+    testLabel = new QLabel("Step:", this);
     mainLayout->addWidget(testLabel);
-    testLabel->setText("Step:");
+
     createControlButtons(mainLayout);
 
     time = new QTimer(this);
     connect(time, &QTimer::timeout, this, &PuzzleProject::updateTime);
     time->start(100);
-    
 
-    /*for (int i = 0; i < boardSize; i++) {
-        for (int j = 0; j < boardSize; j++) {
-            QPushButton* button = new QPushButton(this);
-            button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-            buttons.append(button);
-            gridLayout->addWidget(button, i, j);
-            connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
-        }
-    }*/
     createBoardLayout();
     updateBoard();
 }
 
-PuzzleProject::~PuzzleProject()
-{
-    delete board;
-}
+PuzzleProject::~PuzzleProject() {}
 
 void PuzzleProject::updateBoard() {
-    if (dynamic_cast<HexPuzzle*>(board)) {
-        updateBoardHex();
-    }
-    else {
-        updateBoardClassic();
-    }
-    
+    logic->getBoardType() == "hex" ? updateBoardHex() : updateBoardClassic();
 }
-void PuzzleProject::updateBoardClassic()
-{
-    const auto& grid = board->getBoard();
+
+void PuzzleProject::updateBoardClassic() {
+    const auto& grid = logic->getBoard();
     int index = 0;
     int maxV = grid.size() * grid.size();
-    //testLabel->setText(QString::number(grid.size()));
+
     for (int i = 0; i < grid.size(); i++) {
         for (int j = 0; j < grid.size(); j++) {
             QPushButton* btn = buttons[index++];
@@ -80,15 +59,10 @@ void PuzzleProject::updateBoardClassic()
         }
     }
 }
-void PuzzleProject::updateBoardHex() {
 
-    const auto& grid = board->getBoard();
-    //testLabel->setText(QString::number(grid.size()));
-    int maxVal = 0;
-    if (HexPuzzle* h = dynamic_cast<HexPuzzle*>(board)) {
-        maxVal=h->getTileAmount();
-    }
-    //maxVal = ((grid.size()) * ((grid.size() * 3) )) / 2; // wzór na liczbe pol w polu hexagonalnym
+void PuzzleProject::updateBoardHex() {
+    const auto& grid = logic->getBoard();
+    int maxVal = logic->getMaxTileValue();
     int index = 0;
 
     for (int i = 0; i < grid.size(); ++i) {
@@ -96,73 +70,58 @@ void PuzzleProject::updateBoardHex() {
             QPushButton* btn = buttons[index++];
             int val = grid[i][j];
 
-            
             bool up = (i < grid.size() / 2) ? (j % 2 == 0) : (j % 2 == 1);
 
-            // Maska trójk¹ta
             int w = btn->width();
             int h = btn->height();
             QPolygon triangle;
             if (w > 0 && h > 0) {
-                triangle = up
-                    ? QPolygon({ QPoint(w / 2, 0), QPoint(0, h), QPoint(w, h) })
+                triangle = up ? QPolygon({ QPoint(w / 2, 0), QPoint(0, h), QPoint(w, h) })
                     : QPolygon({ QPoint(0, 0), QPoint(w, 0), QPoint(w / 2, h) });
                 btn->setMask(QRegion(triangle));
             }
 
-            if (val == maxVal-2 || val == maxVal - 1) {
-                btn->setText(QString::number(val));
+            if (val == maxVal - 2 || val == maxVal - 1) {
+                btn->setText("");
                 btn->setStyleSheet("background-color: #cccccc; border: none;");
             }
             else {
                 QString color = up ? "#4CAF50" : "#2196F3";
                 btn->setText(QString::number(val));
-                btn->setStyleSheet(
-                    "background-color: " + color + ";"
-                    "color: white;"
-                    "font-weight: bold;"
-                    "font-size: 16px;"
-                    "border: none;"
-                    "margin: 0px; padding: 0px;");
+                btn->setStyleSheet("background-color: " + color + "; color: white; font-weight: bold; font-size: 16px; border: none; margin: 0px; padding: 0px;");
             }
         }
     }
 }
-
 
 void PuzzleProject::onTileClicked() {
     QPushButton* clickedButton = qobject_cast<QPushButton*>(sender());
     if (!clickedButton) return;
     int index = buttons.indexOf(clickedButton);
 
-    const auto& grid = board->getBoard();
-    board->move(index);
-    
-   
+    logic->move(index);
     updateBoard();
 
-    if (board->isSolved())
-    {
+    if (logic->isSolved()) {
         time->stop();
-        double t = board->getTime();
+        double t = logic->getTime();
         timeLabel->setText("Gratulacje! Czas:" + QString::number(t));
         QMessageBox::information(this, "Ukonczone", "Bravo!: Czas" + QString::number(t));
 
-        player.setScore(t, board->getSize(), (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic"));
+        logic->recordWin(t);
         deactivateButtons();
     }
 }
 
 void PuzzleProject::updateTime() {
-    timeLabel->setText("Czas:" + QString::number(board->getTime()));
+    timeLabel->setText("Czas:" + QString::number(logic->getTime()));
 }
 
-void PuzzleProject::closeEvent(QCloseEvent* event)
-{
-    player.saveToFile();
-
+void PuzzleProject::closeEvent(QCloseEvent* event) {
+    logic->getPlayer().saveToFile();
     event->accept();
 }
+
 void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     undoButton = new QPushButton("Cofnij", this);
     redoButton = new QPushButton("Przywroc", this);
@@ -173,6 +132,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     rankingButton = new QPushButton("Ranking graczy", this);
     backButton = new QPushButton("Powrot do menu", this);
 
+
     layout->addWidget(undoButton);
     layout->addWidget(redoButton);
     layout->addWidget(saveButton);
@@ -182,6 +142,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     layout->addWidget(rankingButton);
     layout->addWidget(backButton);
 
+
     connect(undoButton, &QPushButton::clicked, this, &PuzzleProject::handleUndo);
     connect(redoButton, &QPushButton::clicked, this, &PuzzleProject::handleRedo);
     connect(saveButton, &QPushButton::clicked, this, &PuzzleProject::handleSave);
@@ -189,7 +150,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     connect(themeButton, &QPushButton::clicked, this, &PuzzleProject::handleThemeToggle);
     connect(backButton, &QPushButton::clicked, this, &PuzzleProject::handleBackToMenu);
     connect(statsButton, &QPushButton::clicked, [this]() {
-        StatisticsDialog dlg(player, this);
+        StatisticsDialog dlg(logic->getPlayer(), this);
         dlg.exec();
         });
     connect(rankingButton, &QPushButton::clicked, [this]() {
@@ -198,36 +159,34 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
         });
 
 }
+
 void PuzzleProject::handleBackToMenu() {
-    player.saveToFile(); // zapisz dane gracza
-    emit returnToMenu(); // sygnalizuj powrót do menu
-    this->close();
+    logic->getPlayer().saveToFile();
+    emit returnToMenu();
+    close();
 }
+
 void PuzzleProject::handleUndo() {
-    if (board->canUndo()) {
-        board->undoMove();
+    if (logic->canUndo()) {
+        logic->undo();
         updateBoard();
     }
 }
 
 void PuzzleProject::handleRedo() {
-    if (board->canRedo()) {
-        board->redoMove();
+    if (logic->canRedo()) {
+        logic->redo();
         updateBoard();
     }
 }
 
 void PuzzleProject::handleSave() {
-    
-    board->saveState(player.getPlayerName() + "_"+ to_string(board->getBoard().size())+"_"
-    + (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic") +"_save.txt");
+    logic->saveState();
     QMessageBox::information(this, "Zapisano", "Stan gry zosta³ zapisany.");
 }
 
 void PuzzleProject::handleLoad() {
-    if (board->loadState(player.getPlayerName() + "_" + to_string(board->getBoard().size()) + "_"
-        + (dynamic_cast<HexPuzzle*>(board) ? "hex" : "classic") + "_save.txt"))
-    {
+    if (logic->loadState()) {
         updateBoard();
         QMessageBox::information(this, "Wczytano", "Stan gry zosta³ wczytany.");
     }
@@ -247,7 +206,7 @@ void PuzzleProject::handleThemeToggle() {
 }
 
 void PuzzleProject::createBoardLayout() {
-    const auto& grid = board->getBoard();
+    const auto& grid = logic->getBoard();
     buttons.clear();
 
     while (QLayoutItem* item = gridLayout->takeAt(0)) {
@@ -255,7 +214,7 @@ void PuzzleProject::createBoardLayout() {
         delete item;
     }
 
-    gridLayout->setSpacing(1); 
+    gridLayout->setSpacing(1);
 
     int maxWidth = 0;
     for (const auto& row : grid)
@@ -269,7 +228,7 @@ void PuzzleProject::createBoardLayout() {
         for (int j = 0; j < rowSize; ++j) {
             QPushButton* button = new QPushButton(this);
             button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-            button->setMinimumSize(50, 50); // wiêksze trójk¹ty
+            button->setMinimumSize(50, 50);
             buttons.append(button);
             gridLayout->addWidget(button, i, j + offset);
             connect(button, &QPushButton::clicked, this, &PuzzleProject::onTileClicked);
@@ -278,13 +237,13 @@ void PuzzleProject::createBoardLayout() {
 
     this->update();
 }
+
 void PuzzleProject::deactivateButtons() {
     for (QPushButton* btn : buttons)
-        btn->setEnabled(false); // pola planszy
+        btn->setEnabled(false);
 
     undoButton->setEnabled(false);
     redoButton->setEnabled(false);
     saveButton->setEnabled(false);
     loadButton->setEnabled(false);
-
 }
