@@ -8,6 +8,7 @@ PuzzleBoard::PuzzleBoard(int size) {
 		for (int j = 0; j < size; j++)
 			board[i][j] = v++;// Wype³nia planszê wartoœciami od 1 do n*n
 }
+// Mieszanie planszy – zmiana uk³adu kafelków na losowy
 void PuzzleBoard::changeBoard()
 {
 	vector<int> tiles;
@@ -31,6 +32,7 @@ void PuzzleBoard::changeBoard()
 	stateManager.saveState(board);
 	startTimer();
 }
+// Wykonanie ruchu kafelkiem na podstawie indeksu 1D
 void PuzzleBoard::move(int index) {
 
 	if (solved) return;
@@ -38,6 +40,8 @@ void PuzzleBoard::move(int index) {
 	int x = index / size;
 	int y = index % size;
 
+	// Sprawdzenie, czy s¹siednie pole jest puste (czyli ma wartoœæ size*size)
+	// Jeœli tak, wykonujemy zamianê miejsc i zapisujemy stan
 	if ((x > 0 && board[x - 1][y] == size * size)) {// Puste pole powy¿ej  
 		stateManager.saveState(board);
 		swap(board[x - 1][y], board[x][y]);
@@ -55,6 +59,8 @@ void PuzzleBoard::move(int index) {
 		swap(board[x][y + 1], board[x][y]);
 	}
 }
+
+// Sprawdzenie, czy plansza zosta³a u³o¿ona poprawnie
 bool PuzzleBoard::isSolved() {
 	int v=1;
 	for (const auto r : board) {
@@ -66,9 +72,13 @@ bool PuzzleBoard::isSolved() {
 	solved = true;
 	return solved;
 }
+
+// Rozpoczêcie liczenia czasu gry
 void PuzzleBoard::startTimer() {
 	startTime = chrono::steady_clock::now();
 }
+
+// Zwraca czas gry w sekundach
 double PuzzleBoard::getTime() {
 	auto now = chrono::steady_clock::now();
 	chrono::duration<double> between = now - startTime;
@@ -95,15 +105,18 @@ void PuzzleBoard::redoMove() {
 	}
 }
 
+// Zapisuje aktualny stan planszy oraz czas do pliku
 void PuzzleBoard::saveState(const string& filename) {
 	stateManager.saveToFile(filename, board,getTime());
 }
 
+// Wczytuje stan planszy oraz czas z pliku
 bool PuzzleBoard::loadState(const string& filename) {
 	double time;
 	if (stateManager.loadFromFile(filename, board, time))
 	{
 		using clock = std::chrono::steady_clock;
+		// Odtworzenie punktu startowego czasomierza
 		startTime = clock::now() - std::chrono::duration_cast<clock::duration>(std::chrono::duration<double>(time));
 		return true;
 

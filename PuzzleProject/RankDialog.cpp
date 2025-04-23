@@ -7,6 +7,7 @@ RankDialog::RankDialog(QWidget* parent) : QDialog(parent) {
     QTableWidget* table = new QTableWidget(this);
     layout->addWidget(table);
 
+    // Wczytanie wszystkich graczy z plików *_scores.txt
     vector<Player> players = Player::loadAllPlayers();
 
     struct RankRow {
@@ -20,6 +21,7 @@ RankDialog::RankDialog(QWidget* parent) : QDialog(parent) {
     vector<RankRow> rows;
 
     for (const auto& p : players) {
+        // Mapa do statystyk gracza wg (typ planszy, rozmiar) na (liczba gier, najlepszyczas, œredni czas)
         map<pair<string, int>, tuple<int, double, double>> stats;
 
         for (const auto& s : p.getScores()) {
@@ -28,16 +30,18 @@ RankDialog::RankDialog(QWidget* parent) : QDialog(parent) {
             string type = get<2>(s);
             auto key = make_pair(type, size);
 
+            // Jeœli to pierwszy wynik dla danego typu/rozmiaru – zainicjalizuj
             if (stats.count(key) == 0)
                 stats[key] = { 1, time, time };
             else {
+                // Referencje bezpoœrednio do danych w mapie 
                 auto& [count, sum, best] = stats[key];
                 count++;
                 sum += time;
                 if (time < best) best = time;
             }
         }
-
+        // Zamiana zmapowanych statystyk do wierszy dla tabeli
         for (const auto& [key, val] : stats) {
             rows.push_back({ p.getPlayerName(), key.first, key.second,
                              get<0>(val), get<1>(val) / get<0>(val), get<2>(val) });

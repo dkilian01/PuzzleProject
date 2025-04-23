@@ -7,12 +7,13 @@
 #include <QFile>
 #include <QTextStream>
 using namespace std;
-
+// Konstruktor – tworzy heksagonalną planszę z trójkątnymi kafelkami
 HexPuzzle::HexPuzzle(int size) : size(size) {
-    int rows = size - 1;
-    board.resize(rows);
-
+    int rows = size - 1;// Liczba wierszy zależy od rozmiaru (dla size=5 => 4 rzędy)
+    board.resize(rows); // Inicjalizacja planszy jako wektora wierszy
     tileAmount = 1;
+
+    // Tworzenie romboidalnego układu – długość wierszy rośnie, potem maleje
     for (int i = 0; i < rows; ++i) {
         int layer = (i < rows / 2) ? i : rows - 1 - i;
         int rowLength = size + 2 * layer;
@@ -31,10 +32,12 @@ HexPuzzle::HexPuzzle(int size) : size(size) {
     board[empty1.first][empty1.second] = tileAmount - 2;
     board[empty2.first][empty2.second] = tileAmount - 1;
 }
+
+// Logika przesunięcia kafelka
 void HexPuzzle::move(int index) {
     index++;
     if (solved)return;
-    auto from = indexToCoord(index);
+    auto from = indexToCoord(index);// Przekształcamy indeks na współrzędne
     if (!isValid(from.first, from.second)) {
         return;
     }
@@ -50,7 +53,7 @@ void HexPuzzle::move(int index) {
 
 
     pair<int, int> empties[2] = { empty1, empty2 };
-
+    // Szukamy układu trzech sąsiadujących pól (kafelek – puste – puste)
     for (const auto& neighbor : getTriangleNeighbors(from.first, from.second)) {
         if (board[neighbor.first][neighbor.second] == tileAmount-2 || board[neighbor.first][neighbor.second] == tileAmount - 1)
         {
@@ -75,6 +78,7 @@ bool HexPuzzle::isSolved()  {
     return solved;
 }
 
+// Tasowanie planszy heksagonalnej z uwzględnieniem trójkątnych kafelków
 void HexPuzzle::changeBoard() {
     vector<int> tiles1, tiles2;
 
@@ -106,7 +110,8 @@ void HexPuzzle::changeBoard() {
     }
     shuffle(tiles1.begin(), tiles1.end(), default_random_engine(random_device{}()));
     shuffle(tiles2.begin(), tiles2.end(), default_random_engine(random_device{}()));
-    int s1 = tiles1.size(), s2 = tiles2.size();
+    
+    // Przypisanie wartości z powrotem do planszy, zgodnie z orientacją
     int index1 = 0,index2=0;
     for (int i = 0; i < size-1; i++) {
         for (int j = 0; j < board[i].size(); j++) {

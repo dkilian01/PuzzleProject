@@ -5,27 +5,28 @@ StatisticsDialog::StatisticsDialog(const Player& player, QWidget* parent)
 
     setWindowTitle("Statystyki gracza");
     QVBoxLayout* layout = new QVBoxLayout(this);
-
     QTableWidget* table = new QTableWidget(this);
     layout->addWidget(table);
 
     QLabel* nameLabel = new QLabel("Gracz: " + QString::fromStdString(player.getPlayerName()), this);
 
-
+    // Pobranie wszystkich wyników gracza: (czas, rozmiar planszy, typ planszy)
     auto scores = player.getScores();
 
-   
+    // Mapa statystyk: klucz (typ, rozmiar planszy), wartoœæ (liczba gier, suma czasów, najlepszy czas)
     map<pair<string, int>, tuple<int, double, double>> stats;
 
+    // Przetwarzanie wyników gracza
     for (const auto& s : scores) {
         double time = get<0>(s);
         int size = get<1>(s);
         string type = get<2>(s);
         auto key = make_pair(type, size);
-
+        // Inicjalizacja danych statystycznych dla danej konfiguracji
         if (stats.count(key) == 0)
             stats[key] = { 1, time, time };
         else {
+            // Uaktualnianie danych: zwiêksz licznik, dodaj czas, aktualizuj najlepszy czas
             auto& [count, sum, best] = stats[key];
             count++;
             sum += time;

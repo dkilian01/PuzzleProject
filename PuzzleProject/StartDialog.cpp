@@ -9,22 +9,25 @@ StartDialog::StartDialog(QWidget* parent)
     setWindowTitle("Start");
 
     QVBoxLayout* layout = new QVBoxLayout(this);
-
     QLabel* playerLabel = new QLabel("Wybierz istniej¹cego gracza lub wpisz nowego", this);
     layout->addWidget(playerLabel);
 
+    // Lista istniej¹cych graczy (wczytana z plików *_scores.txt)
     playerList = new QListWidget(this);
     QDir dir(".");
     QStringList files = dir.entryList(QStringList() << "*_scores.txt", QDir::Files);
     for (const QString& file : files) {
-        playerList->addItem(file.left(file.indexOf("_scores.txt"))); // Usuwamy rozszerzenie
+        // Dodawanie graczy do listy po usuniêciu sufiksu "_scores.txt"
+        playerList->addItem(file.left(file.indexOf("_scores.txt")));
     }
     layout->addWidget(playerList);
 
+    // Pole do wpisania nowego gracza
     newPlayer = new QLineEdit(this);
     newPlayer->setPlaceholderText("Wpisz nowego gracza...");
     layout->addWidget(newPlayer);
 
+    // Powi¹zanie klikniêcia w liœcie graczy z wyczyszczeniem pola na nowego gracza
     connect(playerList, &QListWidget::itemClicked, this, &StartDialog::addNewPlayer);
 
 
@@ -35,6 +38,7 @@ StartDialog::StartDialog(QWidget* parent)
     sizeSelector->setRange(2, 10); // Zakres dozwolonych rozmiarów planszy
     sizeSelector->setValue(5);     // Domyœlna wartoœæ
 
+    // Etykieta i wybór typu planszy (klasyczna/heksagonalna)
     QLabel* typeLabel = new QLabel("Typ planszy:", this);
     layout->addWidget(typeLabel);
 
@@ -48,6 +52,7 @@ StartDialog::StartDialog(QWidget* parent)
 
     layout->addWidget(sizeSelector);
     layout->addWidget(startButton);
+    // Aktualizacja zakresu rozmiarów po zmianie typu planszy
     connect(boardTypeBox, &QComboBox::currentTextChanged, this, &StartDialog::updateSizeRange);
     updateSizeRange(boardTypeBox->currentText());
 }

@@ -9,10 +9,13 @@
 PuzzleProject::PuzzleProject(GameLogic* logic, QWidget* parent)
     : QMainWindow(parent), logic(logic) {
     ui.setupUi(this);
+
+    // G³ówne okno aplikacji – widget centralny
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
-
     QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
+
+    // Tworzymy uk³ad siatki do rozmieszczenia kafelków planszy
     gridLayout = new QGridLayout();
     mainLayout->addLayout(gridLayout);
 
@@ -22,22 +25,27 @@ PuzzleProject::PuzzleProject(GameLogic* logic, QWidget* parent)
     testLabel = new QLabel("Step:", this);
     mainLayout->addWidget(testLabel);
 
+    // Tworzenie przycisków kontrolnych (zapis, cofnij itd.)
     createControlButtons(mainLayout);
 
+    // Timer do aktualizacji zegara co 100 ms
     time = new QTimer(this);
     connect(time, &QTimer::timeout, this, &PuzzleProject::updateTime);
     time->start(100);
 
+    // Inicjalizacja uk³adu planszy
     createBoardLayout();
     updateBoard();
 }
 
 PuzzleProject::~PuzzleProject() {}
 
+// Aktualizacja planszy w zale¿noœci od typu
 void PuzzleProject::updateBoard() {
     logic->getBoardType() == "hex" ? updateBoardHex() : updateBoardClassic();
 }
 
+// Aktualizacja klasycznej planszy (kwadratowe przyciski)
 void PuzzleProject::updateBoardClassic() {
     const auto& grid = logic->getBoard();
     int index = 0;
@@ -60,6 +68,7 @@ void PuzzleProject::updateBoardClassic() {
     }
 }
 
+// Aktualizacja planszy heksagonalnej (z trójk¹tnymi przyciskami)
 void PuzzleProject::updateBoardHex() {
     const auto& grid = logic->getBoard();
     int maxVal = logic->getMaxTileValue();
@@ -94,6 +103,7 @@ void PuzzleProject::updateBoardHex() {
     }
 }
 
+// Obs³uga klikniêcia w przycisk kafelka
 void PuzzleProject::onTileClicked() {
     QPushButton* clickedButton = qobject_cast<QPushButton*>(sender());
     if (!clickedButton) return;
@@ -102,6 +112,7 @@ void PuzzleProject::onTileClicked() {
     logic->move(index);
     updateBoard();
 
+    // Jeœli gra zosta³a ukoñczona
     if (logic->isSolved()) {
         time->stop();
         double t = logic->getTime();
@@ -113,10 +124,12 @@ void PuzzleProject::onTileClicked() {
     }
 }
 
+// Aktualizacja zegara gry
 void PuzzleProject::updateTime() {
     timeLabel->setText("Czas:" + QString::number(logic->getTime()));
 }
 
+// Zapisanie danych gracza przy zamykaniu okna
 void PuzzleProject::closeEvent(QCloseEvent* event) {
     logic->getPlayer().saveToFile();
     event->accept();
@@ -142,7 +155,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     layout->addWidget(rankingButton);
     layout->addWidget(backButton);
 
-
+    // Podpinanie akcji do przycisków
     connect(undoButton, &QPushButton::clicked, this, &PuzzleProject::handleUndo);
     connect(redoButton, &QPushButton::clicked, this, &PuzzleProject::handleRedo);
     connect(saveButton, &QPushButton::clicked, this, &PuzzleProject::handleSave);
@@ -160,12 +173,14 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
 
 }
 
+// Powrót do menu startowego
 void PuzzleProject::handleBackToMenu() {
     logic->getPlayer().saveToFile();
     emit returnToMenu();
     close();
 }
 
+// Obs³uga przycisków cofania/przywracania
 void PuzzleProject::handleUndo() {
     if (logic->canUndo()) {
         logic->undo();
@@ -180,6 +195,7 @@ void PuzzleProject::handleRedo() {
     }
 }
 
+// Zapis i wczytanie stanu gry
 void PuzzleProject::handleSave() {
     logic->saveState();
     QMessageBox::information(this, "Zapisano", "Stan gry zosta³ zapisany.");
@@ -205,10 +221,12 @@ void PuzzleProject::handleThemeToggle() {
     }
 }
 
+// Tworzy uk³ad przycisków kafelków planszy
 void PuzzleProject::createBoardLayout() {
     const auto& grid = logic->getBoard();
     buttons.clear();
 
+    // Usuwanie poprzednich przycisków z siatki
     while (QLayoutItem* item = gridLayout->takeAt(0)) {
         delete item->widget();
         delete item;
@@ -216,10 +234,12 @@ void PuzzleProject::createBoardLayout() {
 
     gridLayout->setSpacing(1);
 
+    // Ustalanie maksymalnej szerokoœci wiersza
     int maxWidth = 0;
     for (const auto& row : grid)
         maxWidth = std::max(maxWidth, static_cast<int>(row.size()));
 
+    // Tworzenie przycisków i dodanie ich do uk³adu
     int index = 0;
     for (int i = 0; i < grid.size(); ++i) {
         int rowSize = grid[i].size();
@@ -238,6 +258,7 @@ void PuzzleProject::createBoardLayout() {
     this->update();
 }
 
+// Dezaktywacja przycisków po ukoñczeniu gry
 void PuzzleProject::deactivateButtons() {
     for (QPushButton* btn : buttons)
         btn->setEnabled(false);

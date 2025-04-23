@@ -7,6 +7,7 @@
 using namespace std;
 GameLogic::GameLogic(std::unique_ptr<PuzzleBase> board, Player player)
     : board(std::move(board)), player(std::move(player)) {
+    // Okreœlenie typu planszy – dynamiczne sprawdzenie, czy to PuzzleBoard (klasyczna)
     boardType = dynamic_cast<PuzzleBoard*>(this->board.get()) ? "classic" : "hex";
 }
 
@@ -86,19 +87,19 @@ void GameLogic::persist() {
     player.saveToFile();
 }
 
-
-
-
-
+// Zwraca maksymaln¹ wartoœæ kafelka, w zale¿noœci od typu planszy
 int GameLogic::getMaxTileValue() const {
+    // Jeœli plansza to HexPuzzle – pobierz przez metodê getTileAmount()
     if (auto* hex = dynamic_cast<HexPuzzle*>(board.get())) {
         return hex->getTileAmount();
     }
     else {
+        // Dla klasycznej planszy: maksymalna wartoœæ = rozmiar * rozmiar
         int size = board->getSize();
         return size * size;
     }
 }
 string GameLogic::saveFileName() const {
+    // Format: <nazwa_gracza>_<rozmiar>_<typ>_save.txt
     return player.getPlayerName() + "_" + std::to_string(board->getSize()) + "_" + boardType + "_save.txt";
 }
