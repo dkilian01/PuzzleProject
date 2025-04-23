@@ -131,7 +131,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     statsButton = new QPushButton("Statystyki gracza", this);
     rankingButton = new QPushButton("Ranking graczy", this);
     backButton = new QPushButton("Powrot do menu", this);
-
+    solveButton = new QPushButton("Rozwiaz automatycznie", this);
 
     layout->addWidget(undoButton);
     layout->addWidget(redoButton);
@@ -141,7 +141,7 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
     layout->addWidget(statsButton);
     layout->addWidget(rankingButton);
     layout->addWidget(backButton);
-
+    layout->addWidget(solveButton);
 
     connect(undoButton, &QPushButton::clicked, this, &PuzzleProject::handleUndo);
     connect(redoButton, &QPushButton::clicked, this, &PuzzleProject::handleRedo);
@@ -157,7 +157,30 @@ void PuzzleProject::createControlButtons(QVBoxLayout* layout) {
         RankDialog dlg(this);
         dlg.exec();
         });
+    connect(solveButton, &QPushButton::clicked, [this]() {
+        auto moves = logic->solve();
+        if (moves.empty()) {
+            QMessageBox::warning(this, "Brak rozwi¹zania", "Uk³ad nie jest rozwi¹zywalny lub przekroczono limit.");
+            return;
+        }
 
+        for (int index : moves) {
+            logic->move(index);
+            updateBoard();
+            qApp->processEvents();
+            QThread::msleep(150);
+        }
+
+        if (logic->isSolved()) {
+            time->stop();
+            double t = logic->getTime();
+            timeLabel->setText("Gratulacje! Czas: " + QString::number(t));
+            QMessageBox::information(this, "Ukoñczone", "Puzzle zosta³y rozwi¹zane automatycznie.");
+
+            logic->getPlayer().setScore(t, logic->getSize(), "classic");
+            deactivateButtons();
+        }
+        });
 }
 
 void PuzzleProject::handleBackToMenu() {

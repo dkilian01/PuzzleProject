@@ -33,7 +33,7 @@ public:
     void recordWin(double time);
     void persist();
 
-
+    vector<int> solve();
 
 private:
     unique_ptr<PuzzleBase> board;

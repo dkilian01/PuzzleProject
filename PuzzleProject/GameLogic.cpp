@@ -88,7 +88,11 @@ void GameLogic::persist() {
 
 
 
-
+vector<int> GameLogic::solve() {
+    auto* classic = dynamic_cast<PuzzleBoard*>(board.get());
+    if (!classic) return {};
+    return PuzzleSolver::solve(*classic);
+}
 
 int GameLogic::getMaxTileValue() const {
     if (auto* hex = dynamic_cast<HexPuzzle*>(board.get())) {

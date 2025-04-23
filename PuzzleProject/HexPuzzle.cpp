@@ -49,7 +49,7 @@ void HexPuzzle::move(int index) {
 
 
 
-    pair<int, int> empties[2] = { empty1, empty2 };
+    
 
     for (const auto& neighbor : getTriangleNeighbors(from.first, from.second)) {
         if (board[neighbor.first][neighbor.second] == tileAmount-2 || board[neighbor.first][neighbor.second] == tileAmount - 1)
@@ -58,7 +58,9 @@ void HexPuzzle::move(int index) {
             {
                 if (board[neighbor2.first][neighbor2.second] == tileAmount-2 || board[neighbor2.first][neighbor2.second] == tileAmount - 1)
                 {
+                    stateManager.saveState(board);
                     swap(board[from.first][from.second], board[neighbor2.first][neighbor2.second]);
+                    
                 }
             }
         }

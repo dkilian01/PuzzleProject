@@ -12,7 +12,7 @@ PuzzleBoard::PuzzleBoard(int size) {
 void PuzzleBoard::changeBoard()
 {
 	vector<int> tiles;
-
+	do {
 		tiles.clear();
 		for (auto r : board)
 			for (int v : r)
@@ -28,7 +28,7 @@ void PuzzleBoard::changeBoard()
 				index++;
 			}
 		}
-
+	} while (!PuzzleSolver::isSolvable(board));
 	stateManager.saveState(board);
 	startTimer();
 }

@@ -36,7 +36,7 @@ private:
     QPushButton* statsButton;
     QPushButton* rankingButton;
     QPushButton* backButton;
-
+    QPushButton* solveButton;
 
     bool darkMode = false;
 
