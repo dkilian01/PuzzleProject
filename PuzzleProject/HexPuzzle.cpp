@@ -58,6 +58,7 @@ void HexPuzzle::move(int index) {
             {
                 if (board[neighbor2.first][neighbor2.second] == tileAmount-2 || board[neighbor2.first][neighbor2.second] == tileAmount - 1)
                 {
+                    stateManager.saveState(board);
                     swap(board[from.first][from.second], board[neighbor2.first][neighbor2.second]);
                 }
             }

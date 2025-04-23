@@ -1,5 +1,4 @@
 #include "PuzzleBoard.h"
-#include "PuzzleSolver.h"
 #include<algorithm>
 using namespace std;
 PuzzleBoard::PuzzleBoard(int size) {
