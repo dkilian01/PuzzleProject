@@ -54,11 +54,23 @@ RankDialog::RankDialog(QWidget* parent) : QDialog(parent) {
     for (int i = 0; i < rows.size(); ++i) {
         table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(rows[i].name)));
         table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(rows[i].type)));
-        table->setItem(i, 2, new QTableWidgetItem(QString::number(rows[i].size)));
-        table->setItem(i, 3, new QTableWidgetItem(QString::number(rows[i].count)));
-        table->setItem(i, 4, new QTableWidgetItem(QString::number(rows[i].best)));
-        table->setItem(i, 5, new QTableWidgetItem(QString::number(rows[i].avg)));
-    }
 
+        QTableWidgetItem* item1 = new QTableWidgetItem(QString::number(rows[i].size));
+        item1->setData(Qt::DisplayRole, static_cast<int>(rows[i].size));
+        table->setItem(i, 2, item1);
+
+        QTableWidgetItem* item2 = new QTableWidgetItem();
+        item2->setData(Qt::DisplayRole, static_cast<int>(rows[i].count)); 
+        table->setItem(i, 3, item2); 
+
+        QTableWidgetItem* item3 = new QTableWidgetItem();
+        item3->setData(Qt::DisplayRole, static_cast<double>(rows[i].best));
+        table->setItem(i, 4, item3);
+
+        QTableWidgetItem* item4 = new QTableWidgetItem();
+        item4->setData(Qt::DisplayRole, static_cast<double>(rows[i].avg));
+        table->setItem(i, 5, item4);
+    }
+    table->setSortingEnabled(true);
     table->resizeColumnsToContents();
 }

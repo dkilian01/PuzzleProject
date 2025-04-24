@@ -125,6 +125,8 @@ void HexPuzzle::changeBoard() {
                 if (j % 2 == 1)board[i][j] = tiles1[index1++];
                 else board[i][j] = tiles2[index2++];
             }
+
+            // Aktualizacja pozycji pustych pól po tasowaniu
             if (board[i][j] == tileAmount - 1)empty1 = { i,j };
             if (board[i][j] == tileAmount - 2)empty2 = { i,j };
         }
@@ -177,6 +179,7 @@ bool HexPuzzle::loadState(const string& filename) {
     }
     return false;
 }
+// Sprawdza, czy trójkąt jest skierowany w górę
 bool HexPuzzle::isUpTriangle(int i, int j) const {
     if (i <= (size / 2) - 1)
     {
@@ -188,6 +191,7 @@ bool HexPuzzle::isUpTriangle(int i, int j) const {
 bool HexPuzzle::isValid(int i, int j) const {
     return i >= 0 && i < board.size() && j >= 0 && j < board[i].size();
 }
+// Przekształca indeks liniowy (np. z przycisku) na współrzędne (i,j)
 pair<int, int> HexPuzzle::indexToCoord(int index) const {
     int rows = size - 1;
     int currentIndex = 1; 
@@ -205,8 +209,10 @@ int HexPuzzle::getTileAmount()
 {
     return tileAmount;
 }
-std::vector<std::pair<int, int>> HexPuzzle::getTriangleNeighbors(int x, int y) const {
-    std::vector<std::pair<int, int>> neighbors;
+
+// Zwraca listę sąsiadów danego kafelka, zgodnie z układem trójkątów
+vector<pair<int, int>> HexPuzzle::getTriangleNeighbors(int x, int y) const {
+    vector<pair<int, int>> neighbors;
     if (!isValid(x, y)) return neighbors;
 
     bool up = isUpTriangle(x, y);
@@ -214,6 +220,7 @@ std::vector<std::pair<int, int>> HexPuzzle::getTriangleNeighbors(int x, int y) c
     if (isValid(x, y - 1)) neighbors.emplace_back(x, y - 1);
     if (isValid(x, y + 1)) neighbors.emplace_back(x, y + 1);
     int s = size;
+    // Sąsiedzi „ukośni” w zależności od orientacji trójkąta i położenia
     if (up) {
         if (x == ((size - 1) / 2) - 1)
         {
